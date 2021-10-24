@@ -8,7 +8,7 @@ Gunther Correa Bacellar (gunther6@illinois.edu)
 ## Motivation
 Music is an important part of human culture. While it is often thought of as simple entertainment, it can also impact how an individual feels and affect their mood. In fact, music can even be used in therapy to help relieve pressure or certain feelings. Researchers have pondered the possible therapeutic and mood boosting benefits of music for centuries.
 
-Specifically, researchers at Durham University and the University of Jyväskylä, Finland  discovered that even sad music can lift your mood, while other studies suggest music can boost happiness and reduce anxiety. From the drumbeats of our ancient ancestors to today’s unlimited streaming services, music is an integral part of the human experience. In some cases, users may seek to boost their current feeling, regardless of what that feeling is, and they seek for the right song to enhance what they are feeling. 
+Specifically, researchers at Durham University and the University of Jyväskylä, Finland [^1]  discovered that even sad music can lift your mood, while other studies suggest music can boost happiness and reduce anxiety. From the drumbeats of our ancient ancestors to today’s unlimited streaming services, music is an integral part of the human experience. In some cases, users may seek to boost their current feeling, regardless of what that feeling is, and they seek for the right song to enhance what they are feeling. 
 
 Our proposal is to build a recommendation system that will suggest songs to a user based on their desired mood and a few keywords. We will ask the user to provide what their desired mood is from a 1-5 scale (where 1 is “very sad” and 5 is “very happy”), a few key words, and suggest songs that match that sentiment and those keywords.
 
@@ -37,4 +37,4 @@ We will use roughly 3000 song lyrics for this project. Each song has its own cha
 
 Having tested and adjusted sentiment analysis, we will verify the relevance of the search engine using user queries and determine if the results are relevant or not. We will fine tune our algorithm until the index is optimal and provides relevant documents (in this case, song lyrics). 
 
-
+[^1]:Research reveals pain and pleasure of sad music - Durham University (https://www.dur.ac.uk/news/newsitem/?itemno=28329)
