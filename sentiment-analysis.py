@@ -129,7 +129,6 @@ for letter in sorted(os.listdir(dbDir)):
                                     percentage = round((successes + failures) / fileCount * 100, 2)
                                     print(str(successes + failures), 'songs analyzed...', '(', str(percentage),'% )')
 
-
 print('Finished organizing songs. Successes: ',str(successes),'Failures: ',str(failures))
 
 # Write log:
