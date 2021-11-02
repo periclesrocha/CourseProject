@@ -10,7 +10,7 @@ Music is an important part of human culture. While it is often thought of as sim
 
 Specifically, researchers at Durham University and the University of Jyväskylä, Finland [^1]  discovered that even sad music can lift your mood, while other studies suggest music can boost happiness and reduce anxiety. From the drumbeats of our ancient ancestors to today’s unlimited streaming services, music is an integral part of the human experience. In some cases, users may seek to boost their current feeling, regardless of what that feeling is, and they seek for the right song to enhance what they are feeling. 
 
-Our proposal is to build a recommendation system that will suggest songs to a user based on their desired mood and a few keywords. We will ask the user to provide what their desired mood is from a 1-5 scale (where 1 is “very sad” and 5 is “very happy”), a few key words, and suggest songs that match that sentiment and those keywords.
+Our proposal is to build a recommendation system that will suggest songs to a user based on their desired mood and a few keywords. We will ask the user to provide what their desired mood is from a 1-5 scale (where 1 is “very sad” and 5 is “very happy”), a few key words, and suggest songs that match that sentiment and those keywords. This project falls into the “Free Topic” theme. 
 
 ## Method
 We have obtained a database of song lyrics from a diverse set of music genres. Our application will determine the mood of each song using sentiment analysis on each of the song’s lyrics, and build a sentiment index. This sentiment will be a 1-5 scale, where 1 represents negative sentiment and 5 represents positive. Based on the sentiment index, we will use text retrieval techniques to find songs that match the terms provided by the user, within the songs that match the desired mood. Finally, we will provide suggested song names to the user, ordered by relevance, based on the content of the song lyrics.
@@ -18,7 +18,7 @@ We have obtained a database of song lyrics from a diverse set of music genres. O
  ![Method](images/method.png)
 
 
-Songs will be indexed for sentiment and key words based on their lyrics only. We will not analyze melodies or any audio content. This application will be limited to the English language. 
+Songs will be indexed for sentiment and key words based on their lyrics only. We will not analyze melodies or any audio content. This application will be limited to the English language. We will use Python as our programming language. 
 
 ## Milestones
 The following are the steps and key milestones for this project: 
