@@ -9,6 +9,9 @@ import time
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
+nltk.download('punkt') # Required for tokenization
+nltk.download('stopwords') # Required for stopwords
+
 dbDir = 'database'
 outputDir = 'songs'
 nltk.download('vader_lexicon')
@@ -20,7 +23,8 @@ def categorizeSong(albumPath, song, sentiment):
     lyrics = ''
 
     try:
-        with open(inputPath, 'r', encoding='utf-8',errors='ignore') as lines:
+        #with open(inputPath, 'r', encoding='utf-8',errors='ignore') as lines:
+        with open(inputPath, 'r', encoding='utf-8') as lines:
             for line in lines:
                 # Cut of the metadata part of the lyrics
                 if line.startswith('____'):
@@ -30,7 +34,8 @@ def categorizeSong(albumPath, song, sentiment):
         print('Could not open source file on song categorization. Error: ', e)
 
     try:
-        outputFile = open(outputPath, 'w', encoding='utf-8',errors='ignore')
+        #outputFile = open(outputPath, 'w', encoding='utf-8',errors='ignore')
+        outputFile = open(outputPath, 'w', encoding='utf-8')
         outputFile.write(lyrics)
     except Exception as e:
         print('Could not write destination file on song categorization. Error: ', e)
@@ -47,7 +52,19 @@ def cleanupOutputDir(outputDir):
             count += 1
     return count
 
+def removeStopWords(lyrics):
+    stopwords = nltk.corpus.stopwords.words("english")
+    tokens = nltk.word_tokenize(lyrics)
+
+    newLyrics = ''
+    for token in tokens:
+        if token not in stopwords:
+            newLyrics = newLyrics + token + ' '
+    
+    return newLyrics
+
 successes = 0
+
 failures = 0
 failedSongs = []
 
@@ -88,14 +105,14 @@ for letter in sorted(os.listdir(dbDir)):
                             songPath = os.path.join(albumPath, song)
                             if os.path.isfile(songPath):
                                 try:
-                                    lyrics = open(songPath, 'r', encoding='utf-8',errors='ignore').read().strip()
+                                    #lyrics = open(songPath, 'r', encoding='utf-8',errors='ignore').read().strip()
+                                    lyrics = open(songPath, 'r', encoding='utf-8').read().strip()
 
                                     # THINGS I STILL NEED TO DO: 
                                     # 1) DONE - Clean up the destination folders BEFORE I run the algorithm
                                     # 2) Verify song language and use it only if it's English
                                     # 3) Clean metadata BEFORE getting the sentiment
-                                    # 4) Determine if I need to implement tokenization (UNCLEAR OF THIS PACKAGE DOES IT OR NOT)
-                                    # 5) Determine if I need to remove stop words
+                                    # 4) DONE - Determine if I need to remove stop words
 
                                     # Run sentiment analyzis and get the compound score. Categorize the lyric with a sentiment: 1 to 5: 
                                     # 1: < -0.6
@@ -103,9 +120,17 @@ for letter in sorted(os.listdir(dbDir)):
                                     # 3: >= -0.2 and <= 0.2
                                     # 4: > 0.2 and <= 0.6
                                     # 5: > 0.6
-                                    sentiment = SentimentIntensityAnalyzer()
-                                    compound = sentiment.polarity_scores(lyrics)['compound']
 
+                                    # Remove stop words - EVALUATE IF THIS YELDS BETTER RESULTS OR NOT
+                                    lyricsNoStopWords = removeStopWords(lyrics)
+
+                                    sentiment = SentimentIntensityAnalyzer()
+                                    
+                                    # NOTE: Sentiment analysis is run on lyrics that are tokenized and WITHOUT stop words. However... 
+                                    compound = sentiment.polarity_scores(lyricsNoStopWords)['compound']
+
+                                    # ... when we DO categorize songs and want to make them available for search, 
+                                    # they will be stored in their original form. 
                                     if (compound < -0.6):
                                         categorizeSong(albumPath, song, 1)
                                     elif (compound >= -0.6) and (compound < -0.2):
