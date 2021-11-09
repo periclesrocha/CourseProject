@@ -8,6 +8,7 @@ import os
 import time
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from textblob import TextBlob #Required for language detection
 
 nltk.download('punkt') # Required for tokenization
 nltk.download('stopwords') # Required for stopwords
@@ -63,10 +64,16 @@ def removeStopWords(lyrics):
     
     return newLyrics
 
+def detectLanguage(lyrics):
+    songLanguage = TextBlob(lyrics)
+    return songLanguage.detect_language()
+
 successes = 0
 
-failures = 0
+failedSongsCount = 0
 failedSongs = []
+nonEnglishSongsCount = 0
+nonEnglishSongs = []
 
 startTime = time.time()
 
@@ -110,51 +117,58 @@ for letter in sorted(os.listdir(dbDir)):
 
                                     # THINGS I STILL NEED TO DO: 
                                     # 1) DONE - Clean up the destination folders BEFORE I run the algorithm
-                                    # 2) Verify song language and use it only if it's English
+                                    # 2) DONE - Verify song language and use it only if it's English
                                     # 3) Clean metadata BEFORE getting the sentiment
                                     # 4) DONE - Determine if I need to remove stop words
 
-                                    # Run sentiment analyzis and get the compound score. Categorize the lyric with a sentiment: 1 to 5: 
-                                    # 1: < -0.6
-                                    # 2: >= -0.6 and < -0.2
-                                    # 3: >= -0.2 and <= 0.2
-                                    # 4: > 0.2 and <= 0.6
-                                    # 5: > 0.6
+                                    # For some reason, some lyrics are empty. So we'll test that. 
+                                    if lyrics != '':
+                                        # Perform analysis ONLY if lyrics are English
+                                        if detectLanguage(lyrics) != 'en':
+                                            nonEnglishSongsCount += 1
+                                        else:
+                                            # Run sentiment analyzis and get the compound score. Categorize the lyric with a sentiment: 1 to 5: 
+                                            # 1: < -0.6
+                                            # 2: >= -0.6 and < -0.2
+                                            # 3: >= -0.2 and <= 0.2
+                                            # 4: > 0.2 and <= 0.6
+                                            # 5: > 0.6
 
-                                    # Remove stop words - EVALUATE IF THIS YELDS BETTER RESULTS OR NOT
-                                    lyricsNoStopWords = removeStopWords(lyrics)
+                                            # Remove stop words - EVALUATE IF THIS YELDS BETTER RESULTS OR NOT
+                                            lyricsNoStopWords = removeStopWords(lyrics)
 
-                                    sentiment = SentimentIntensityAnalyzer()
-                                    
-                                    # NOTE: Sentiment analysis is run on lyrics that are tokenized and WITHOUT stop words. However... 
-                                    compound = sentiment.polarity_scores(lyricsNoStopWords)['compound']
+                                            sentiment = SentimentIntensityAnalyzer()
+                                            
+                                            # NOTE: Sentiment analysis is run on lyrics that are tokenized and WITHOUT stop words. However... 
+                                            compound = sentiment.polarity_scores(lyricsNoStopWords)['compound']
 
-                                    # ... when we DO categorize songs and want to make them available for search, 
-                                    # they will be stored in their original form. 
-                                    if (compound < -0.6):
-                                        categorizeSong(albumPath, song, 1)
-                                    elif (compound >= -0.6) and (compound < -0.2):
-                                        categorizeSong(albumPath, song, 2)
-                                    elif (compound >= -0.2) and (compound <= 0.2):
-                                        categorizeSong(albumPath, song, 3)
-                                    elif (compound > 0.2) and (compound <= 0.6):
-                                        categorizeSong(albumPath, song, 4)
-                                    elif (compound > 0.6):
-                                        categorizeSong(albumPath, song, 5)
+                                            # ... when we DO categorize songs and want to make them available for search, 
+                                            # they will be stored in their original form.
+                                            if (compound < -0.6):
+                                                categorizeSong(albumPath, song, 1)
+                                            elif (compound >= -0.6) and (compound < -0.2):
+                                                categorizeSong(albumPath, song, 2)
+                                            elif (compound >= -0.2) and (compound <= 0.2):
+                                                categorizeSong(albumPath, song, 3)
+                                            elif (compound > 0.2) and (compound <= 0.6):
+                                                categorizeSong(albumPath, song, 4)
+                                            elif (compound > 0.6):
+                                                categorizeSong(albumPath, song, 5)
 
-                                    successes += 1
+                                            successes += 1
+
                                 except Exception as e:
                                     print('Exception: ', e)
                                     print('Current song: ', songPath)
                                     failedSongs.append(songPath)
-                                    failures += 1
+                                    failedSongsCount += 1
 
                                 # Print status at every 100 songs
-                                if math.remainder(successes + failures, 100) == 0:
-                                    percentage = round((successes + failures) / fileCount * 100, 2)
-                                    print(str(successes + failures), 'songs analyzed...', '(', str(percentage),'% )')
+                                if (successes > 0) and (math.remainder(successes + failedSongsCount, 100) == 0):
+                                    percentage = round((successes + failedSongsCount) / fileCount * 100, 2)
+                                    print(str(successes + failedSongsCount), 'songs analyzed...', '(', str(percentage),'% )')
 
-print('Finished organizing songs. Successes: ',str(successes),'Failures: ',str(failures))
+print('Finished organizing songs. Successes: ',str(successes),'Failures: ',str(failedSongsCount))
 
 # Write log:
 try: 
@@ -165,7 +179,9 @@ try:
     logFile.write('Finished running..: ' + time.asctime(time.localtime(endTime))+'\n')
     logFile.write('Elapsed time......: ' + str(round(elapsedTime,2)) + ' seconds.' + '\n')
     logFile.write('Songs categorized.: ' + str(successes)+'\n')
-    logFile.write('Songs failed......: ' + str(failures)+'\n')
+    logFile.write('Songs failed......: ' + str(failedSongsCount)+'\n')
+    logFile.write('Non-english count.: ' + str(nonEnglishSongsCount)+'\n')
+    logFile.write('Non-english songs.: ' + str(nonEnglishSongs)+'\n')
 
     for failedSong in failedSongs:
         logFile.writelines(failedSong)
