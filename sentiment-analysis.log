@@ -1,5 +1,500 @@
-Started running...: Sun Nov  7 14:56:54 2021
-Finished running..: Sun Nov  7 14:57:28 2021
-Elapsed time......: 34.07 seconds.
-Songs categorized.: 2988
+Started running...: Tue Nov  9 13:24:14 2021
+Finished running..: Tue Nov  9 13:26:53 2021
+Elapsed time......: 159.3 seconds (about 3.0 minutes).
+Songs categorized.: 2444
+Songs per category: 
+ --- 1-Negative........: 1183
+ --- 2-Negative/Neutral: 142
+ --- 3-Neutral.........: 105
+ --- 4-Positive/Neutral: 129
+ --- 5-Positive........: 885
 Songs failed......: 0
+Non-english songs.: 488
+ --- (de): database\A\Adam Angst\Adam Angst\Jesus Christus
+ --- (de): database\A\Adam Angst\Adam Angst\Lauft um euer Leben
+ --- (de): database\A\Adam Angst\Adam Angst\Professoren
+ --- (de): database\A\Adam Angst\Adam Angst\Splitter von Granaten
+ --- (de): database\A\Adam Angst\Adam Angst\Was der Teufel sagt
+ --- (de): database\A\Adam Angst\Adam Angst\Wochenende. Saufen. Geil
+ --- (de): database\A\Adam Angst\Adam Angst\Wunderbar
+ --- (de): database\A\Adolar\Die Kälte der neuen Biederkeit\Halleluja
+ --- (de): database\A\Adolar\Die Kälte der neuen Biederkeit\Raketen
+ --- (de): database\A\Alarmsignal\Revolutionäre Sterben Nie\Wir Leben
+ --- (de): database\A\Alligatoah\Schlaftabletten, Rotwein III\Namen machen
+ --- (de): database\A\Alligatoah\Triebwerke\Narben
+ --- (de): database\A\Alligatoah\Triebwerke\Trauerfeier Lied
+ --- (de): database\A\Alligatoah\Triebwerke\Willst du
+ --- (de): database\A\Anthony Rother\Hacker\Futurist
+ --- (de): database\A\Anthony Rother\Hacker\Hacker
+ --- (de): database\A\Anthony Rother\Simulationszeitalter\Biomechanik
+ --- (de): database\A\Antilopen Gang\Aversion\Die neue Antilopen Gang
+ --- (fr): database\A\Aphex Twin\Windowlicker\Windowlicker
+ --- (de): database\A\ASP\Fremd\Eisige Wirklichkeit
+ --- (de): database\A\ASP\Fremd\Rücken an Rücken
+ --- (de): database\A\ASP\Fremd\Schön, schön, schön
+ --- (de): database\A\ASP\Fremd\Wechselbalg
+ --- (de): database\A\ASP\Zaubererbruder - Der Krabat-Liederzyklus\Denn ich bin der Meister
+ --- (de): database\A\ASP\Zaubererbruder - Der Krabat-Liederzyklus\Krabat
+ --- (de): database\A\ASP\Zaubererbruder - Der Krabat-Liederzyklus\Zaubererbruder
+ --- (de): database\A\Aufbruch\Abend In Der Stadt\Abend In Der Stadt
+ --- (de): database\B\Beginner\Bambule\Fahr'n
+ --- (de): database\B\Beginner\Bambule\Füchse
+ --- (de): database\B\Blumentopf\Kein Zufall\Daß Ich Nicht Lache
+ --- (de): database\B\Boxhamsters\Demut und Elite\Beende Deine Jugend
+ --- (de): database\B\Boxhamsters\Der göttliche Imperator\Der Gute König
+ --- (de): database\B\Boxhamsters\Der göttliche Imperator\Zu Klein
+ --- (de): database\B\Boxhamsters\Tupperparty\Ballermann 6
+ --- (de): database\B\Broilers\Harter Weg (Go!)\Harter Weg (Go!)
+ --- (de): database\B\Broilers\Ich will hier nicht sein\Ich Will Hier Nicht Sein
+ --- (de): database\B\Broilers\Noir\Ich Brenn'
+ --- (de): database\B\Broilers\Noir\Ich Will Hier Nicht Sein
+ --- (de): database\B\Broilers\Noir\Wo Es Hingeht
+ --- (de): database\B\Broilers\Noir\Zurück In Schwarz
+ --- (de): database\B\Broilers\Santa Muerte Live Tapes\Meine Sache (live)
+ --- (de): database\B\Broilers\Vanitas\Meine Sache
+ --- (de): database\B\Broilers\Vanitas\Punkrock Love Song
+ --- (de): database\C\Caliban\Ghost Empire\nebeL
+ --- (de): database\C\Caliban\I Am Nemesis\Dein R3.ich
+ --- (de): database\C\Caliban\I Am Nemesis\Sonne
+ --- (de): database\C\Callejon\Blitzkreuz\Atlantis
+ --- (de): database\C\Callejon\Blitzkreuz\Bevor Du gehst
+ --- (de): database\C\Callejon\Blitzkreuz\Blitzkreuz
+ --- (de): database\C\Callejon\Blitzkreuz\Bring mich fort
+ --- (de): database\C\Callejon\Blitzkreuz\Kind im Nebel
+ --- (de): database\C\Callejon\Blitzkreuz\Kojote UGLY
+ --- (de): database\C\Callejon\Blitzkreuz\Meine Liebe
+ --- (de): database\C\Callejon\Blitzkreuz\Polar
+ --- (de): database\C\Callejon\Blitzkreuz\Porn From Spain 2
+ --- (de): database\C\Callejon\Blitzkreuz\Was bleibt seid ihr
+ --- (de): database\C\Callejon\Man spricht Deutsch\Alles neu
+ --- (de): database\C\Callejon\Man spricht Deutsch\Alles nur geklaut
+ --- (de): database\C\Callejon\Man spricht Deutsch\Durch den Monsun
+ --- (de): database\C\Callejon\Man spricht Deutsch\Ein Kompliment
+ --- (de): database\C\Callejon\Man spricht Deutsch\Hier kommt Alex
+ --- (de): database\C\Callejon\Man spricht Deutsch\Ich find dich scheiße
+ --- (de): database\C\Callejon\Man spricht Deutsch\Major Tom
+ --- (de): database\C\Callejon\Man spricht Deutsch\Mein Block
+ --- (de): database\C\Callejon\Man spricht Deutsch\MfG
+ --- (de): database\C\Callejon\Man spricht Deutsch\Schrei nach Liebe
+ --- (de): database\C\Callejon\Man spricht Deutsch\Schwule Mädchen
+ --- (de): database\C\Callejon\Videodrom\Dein Leben schläft
+ --- (de): database\C\Callejon\Videodrom\Dieses Lied macht betroffen
+ --- (de): database\C\Callejon\Videodrom\DROM
+ --- (de): database\C\Callejon\Videodrom\Gott ist tot
+ --- (de): database\C\Callejon\Videodrom\Immergrün
+ --- (de): database\C\Callejon\Videodrom\Kinder der Nacht
+ --- (de): database\C\Callejon\Videodrom\Lass mich gehen!
+ --- (de): database\C\Callejon\Videodrom\Mein Stein
+ --- (de): database\C\Callejon\Videodrom\Mondfinsternis
+ --- (de): database\C\Callejon\Videodrom\Sexmachine
+ --- (de): database\C\Callejon\Videodrom\Sommer, Liebe, Kokain
+ --- (de): database\C\Callejon\Videodrom\Videodrom
+ --- (de): database\C\Callejon\Wir sind Angst\1000 PS
+ --- (de): database\C\Callejon\Wir sind Angst\Dunkelherz
+ --- (de): database\C\Callejon\Wir sind Angst\Erst wenn Disneyland brennt
+ --- (de): database\C\Callejon\Wir sind Angst\Ich lehne leidenschaftlich ab
+ --- (de): database\C\Callejon\Wir sind Angst\Krankheit Mensch
+ --- (de): database\C\Callejon\Wir sind Angst\Neonblut
+ --- (de): database\C\Callejon\Wir sind Angst\Raketen
+ --- (de): database\C\Callejon\Wir sind Angst\Schreien ist Gold
+ --- (de): database\C\Callejon\Wir sind Angst\Unter Tage
+ --- (de): database\C\Callejon\Wir sind Angst\Veni Vidi Vici
+ --- (de): database\C\Callejon\Wir sind Angst\Wir sind Angst
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Das Ende von John Wayne
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Der Tag an dem die Schwärze blieb
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Fremdkörper
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Infiziert
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Mein Puls = 0
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Phantomschmerz
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Porn From Spain
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Spiel mir das Lied vom Sterben
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Tanz der Teufel
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Und wenn der Schnee
+ --- (de): database\C\Callejon\Zombieactionhauptquartier\Zombiefied
+ --- (de): database\C\Captain PlanET\Treibeis\Pyro
+ --- (de): database\C\Casper\Im Ascheregen\Im Ascheregen
+ --- (de): database\C\Casper\Kein Mensch ist Illegal\Hinterland
+ --- (de): database\D\DCVDNS\D.W.I.S\Eigentlich Wollte Nate Dogg Die Hook Singen
+ --- (de): database\D\DCVDNS\D.W.I.S\Intro
+ --- (de): database\D\Deichkind\Bitte ziehen sie durch\Smogcity
+ --- (de): database\D\Deichkind\Kein Mensch ist Illegal\Denken Sie Groß
+ --- (de): database\D\Der Weg einer Freiheit\Der Weg einer Freiheit\Neubeginn
+ --- (de): database\D\Die Goldenen Zitronen\Kein Mensch ist Illegal\Flimmern
+ --- (de): database\D\Die Ärzte\13\Liebe und Schmerz
+ --- (de): database\D\Die Ärzte\13\Rebell
+ --- (de): database\D\Die Ärzte\Die Bestie In Menschengestalt\Friedenspanzer
+ --- (de): database\D\Die Ärzte\Die Bestie In Menschengestalt\Mach die Augen zu
+ --- (de): database\D\Die Ärzte\Die Bestie In Menschengestalt\Schrei nach Liebe
+ --- (de): database\D\Die Ärzte\Im Schatten der Ärzte\Wie ein Kind
+ --- (de): database\D\Donots\Karacho\Dann ohne mich
+ --- (de): database\D\Donots\Karacho\Ich mach nicht mehr mit
+ --- (de): database\D\Donots\Kein Mensch ist Illegal\Dann ohne mich
+ --- (de): database\D\Dritte Wahl\Fortschritt\Zeit bleib stehen!
+ --- (de): database\D\Dritte Wahl\Gib Acht!\Fliegen
+ --- (de): database\D\Dritte Wahl\nimm drei\auge um auge
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\50 000 Volt
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Drei Wünsche
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Ghostsharks In The Sea
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Helden In Der Nacht
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Kein Schritt Zurück
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Moloch
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Neun Millimeter
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Radieschen Auf Frischkäse
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Sei Mein Wurm
+ --- (de): database\D\Dödelhaie\Schätzchen, Ich Habe Das Land Befreit!\Tag X
+ --- (de): database\D\Dödelhaie\Sinfonie Des Wahnsinns\Das Holzfällerlied
+ --- (de): database\D\Dödelhaie\Sinfonie Des Wahnsinns\Feinde
+ --- (de): database\D\Dödelhaie\Sinfonie Des Wahnsinns\Heute Nacht
+ --- (de): database\D\Dödelhaie\Soundtracks Zum Untergang 4\Dunkelheit
+ --- (de): database\D\Dödelhaie\Spiegelbild\Radikal
+ --- (de): database\E\Egotronic\...die richtige Einstellung\Die Partei
+ --- (de): database\E\Egotronic\Egotronic c’est moi!\Berlin Calling
+ --- (de): database\E\Egotronic\Egotronic c’est moi!\Die richtige Einstellung
+ --- (de): database\E\Egotronic\Egotronic c’est moi!\Exportschlager Leitkultur
+ --- (de): database\E\Egotronic\Egotronic c’est moi!\Maybe Someday
+ --- (de): database\E\Egotronic\Egotronic c’est moi!\Raven gegen Deutschland
+ --- (de): database\E\Egotronic\Egotronic c’est moi!\Toleranz
+ --- (de): database\E\Egotronic\Ich kanns nicht sagen (feat. Midimúm)\Ich kanns nicht sagen (feat. Midimúm) (Kid Schurke Remix)
+ --- (de): database\E\Egotronic\Kotzen Raven gegen Deutschland\Raven gegen Deutschland (Frittenbude Indiefresse Remix)
+ --- (de): database\E\Egotronic\Lustprinzip\Lustprinzip
+ --- (de): database\E\Egotronic\Macht keinen Lärm\Aufstehn
+ --- (sm): database\E\Eluveitie\Evocation I - The Arcane Dominion\Brictom
+ --- (sv): database\E\Eluveitie\Evocation I - The Arcane Dominion\Carnutian Forest
+ --- (la): database\E\Eluveitie\Evocation I - The Arcane Dominion\Dessumiis Luge
+ --- (hr): database\E\Eluveitie\Evocation I - The Arcane Dominion\Ne Regv Na
+ --- (la): database\E\Eluveitie\Evocation I - The Arcane Dominion\Omnos
+ --- (la): database\E\Eluveitie\Evocation I - The Arcane Dominion\The Arcane Dominion
+ --- (eo): database\E\Eluveitie\Evocation I - The Arcane Dominion\Voveso In Mori
+ --- (vi): database\E\Eluveitie\Helvetios\Scorched Earth
+ --- (la): database\E\Eluveitie\Origins\Carry The Torch
+ --- (co): database\E\Eluveitie\Slania\Samon
+ --- (la): database\E\Eluveitie\Slania\Slanias Song
+ --- (bn): database\E\Eluveitie\The Early Years\Aidû
+ --- (sm): database\E\Eluveitie\The Early Years\Siraxta
+ --- (eo): database\E\Eluveitie\The Early Years\Spirit
+ --- (ku): database\E\Eluveitie\The Early Years\Uis Elveti
+ --- (de): database\E\Equilibrium\Erdentempel\Apokalypse
+ --- (de): database\E\Equilibrium\Erdentempel\Freiflug
+ --- (de): database\E\Equilibrium\Erdentempel\Heavy Chill
+ --- (de): database\E\Equilibrium\Erdentempel\Karawane
+ --- (de): database\E\Equilibrium\Erdentempel\Stein Meiner Ahnen
+ --- (de): database\E\Equilibrium\Erdentempel\Uns'rer Flöten Klang
+ --- (de): database\E\Equilibrium\Erdentempel\Waldschrein
+ --- (de): database\E\Equilibrium\Erdentempel\Was Lange Währt
+ --- (de): database\E\Equilibrium\Erdentempel\Wellengang
+ --- (de): database\E\Equilibrium\Erdentempel\Wirtshaus Gaudi
+ --- (de): database\E\Equilibrium\HiFive - Nuclear Blast Presents Youngsters\Blut im Auge
+ --- (de): database\F\Fahnenflucht\Beissreflex\Ohne Ausweg
+ --- (de): database\F\Fahnenflucht\Beissreflex\Willkommen in Deutschland
+ --- (de): database\F\Fahnenflucht\Schwarzmaler\Alle vier Jahre (Wahlkampf)
+ --- (de): database\F\Fahnenflucht\Schwarzmaler\Augen auf
+ --- (de): database\F\Fahnenflucht\Schwarzmaler\Blut
+ --- (de): database\F\Fahnenflucht\Schwarzmaler\Insel Freiheit
+ --- (de): database\F\Fahnenflucht\Schwarzmaler\Leben ist tödlich
+ --- (de): database\F\Fahnenflucht\Schwarzmaler\Schwarzmaler
+ --- (de): database\F\Fahnenflucht\Schwarzmaler\Was tun wenn's brennt
+ --- (de): database\F\Feine Sahne Fischfilet\Bleiben oder gehen\Es bleibt beim Alten
+ --- (de): database\F\Feine Sahne Fischfilet\Bleiben oder gehen\Für diese eine Nacht
+ --- (de): database\F\Feine Sahne Fischfilet\Bleiben oder gehen\Glitzer im Gesicht
+ --- (de): database\F\Feine Sahne Fischfilet\Bleiben oder gehen\Lass uns gehen
+ --- (de): database\F\Feine Sahne Fischfilet\Bleiben oder gehen\Ruhe
+ --- (de): database\F\Feine Sahne Fischfilet\Bleiben oder gehen\Solange es brennt
+ --- (de): database\F\Feine Sahne Fischfilet\Bleiben oder gehen\Warten auf das Meer
+ --- (de): database\F\Feine Sahne Fischfilet\Bleiben oder gehen\Wut
+ --- (de): database\F\Feine Sahne Fischfilet\Für diese eine Nacht\Für diese eine Nacht
+ --- (de): database\F\Feine Sahne Fischfilet\Ich glaube dir\Ich glaube dir
+ --- (de): database\F\Feine Sahne Fischfilet\Scheitern und Verstehen\Dorffeste im Herbst
+ --- (de): database\F\Feine Sahne Fischfilet\Scheitern und Verstehen\Gefällt mir
+ --- (de): database\F\Feine Sahne Fischfilet\Scheitern und Verstehen\Geschichten aus Jarmen
+ --- (de): database\F\Feine Sahne Fischfilet\Scheitern und Verstehen\In unseren Augen
+ --- (de): database\F\Feine Sahne Fischfilet\Scheitern und Verstehen\Komplett im Arsch
+ --- (de): database\F\Feine Sahne Fischfilet\Scheitern und Verstehen\Mit Dir
+ --- (de): database\F\Feine Sahne Fischfilet\Scheitern und Verstehen\Weit hinaus
+ --- (de): database\F\Feine Sahne Fischfilet\Wut im Bauch Trauer im Herzen\Brennen
+ --- (de): database\F\Fettes Brot\3 is ne Party\Für immer immer
+ --- (de): database\F\Fettes Brot\Fettes Brot Für Die Welt\Da Draussen
+ --- (de): database\F\Fjørt\D'accord\Atoll
+ --- (de): database\F\Fjørt\D'accord\Fauxpas
+ --- (de): database\F\Fjørt\D'accord\Für Elise
+ --- (de): database\F\Fjørt\D'accord\Gescholten
+ --- (de): database\F\Fjørt\D'accord\Hallo Zukunft
+ --- (de): database\F\Fjørt\D'accord\Passepartout
+ --- (de): database\F\Fjørt\D'accord\Schnaiserkitt
+ --- (de): database\F\Fjørt\D'accord\Valhalla
+ --- (de): database\F\Fjørt\D'accord\Von Welt
+ --- (de): database\F\Fjørt\Lichterloh\Lichterloh
+ --- (de): database\F\Fliehende Stürme\Himmel Steht Still\Gestern
+ --- (de): database\F\Fliehende Stürme\Himmel Steht Still\Satellit
+ --- (de): database\F\Fliehende Stürme\Hinter Masken\Maschinentrauma
+ --- (de): database\F\Fliehende Stürme\Hinter Masken\Sternenleichen
+ --- (de): database\F\Fliehende Stürme\Hinter Masken\Trümmergemüt
+ --- (fr): database\F\Flávio La Barre\French Romance\French Romance
+ --- (de): database\F\Freundeskreis\FK 10\Mit dir
+ --- (de): database\F\Frittenbude\Bilder mit Katze\Bilder mit Katze
+ --- (de): database\F\Frittenbude\Delfinarium\Aufregende Farben
+ --- (de): database\F\Frittenbude\Delfinarium\Deutschland 500 (feat. Egotronic)
+ --- (de): database\F\Frittenbude\Delfinarium\Wings
+ --- (de): database\F\Frittenbude\Delfinarium\Zeitmaschinen aus Müll
+ --- (de): database\F\Frittenbude\Katzengold\Bilder mit Katze
+ --- (de): database\F\Frittenbude\Katzengold\Katzengold (feat.Flicke & Ira Atari)
+ --- (de): database\F\Frittenbude\Kein Mensch ist Illegal\Die Möglichkeit eines Lamas
+ --- (de): database\F\Frittenbude\Küken des Orion\Army of Küken
+ --- (de): database\F\Frittenbude\Küken des Orion\Die Möglichkeit eines Lamas
+ --- (de): database\F\Frittenbude\Küken des Orion\Endlich unendlich
+ --- (de): database\F\Frittenbude\Küken des Orion\So da wie noch nie
+ --- (de): database\F\Frittenbude\Küken des Orion\Was am Ende bleibt
+ --- (de): database\F\Frittenbude\Nachtigall\Electrofikkkke
+ --- (de): database\F\Frittenbude\Nachtigall\Hildegard
+ --- (de): database\F\Frittenbude\Nachtigall\Irgendwie lieb ich das
+ --- (de): database\F\Frittenbude\Nachtigall\Mindestens in 1000 Jahren
+ --- (de): database\F\Frittenbude\Nachtigall\Zucker
+ --- (de): database\F\Frittenbude\Und Täglich Grüßt Das Murmeltier\Und Täglich Grüßt Das Murmeltier
+ --- (de): database\G\Girls Under Glass\Zyklus\Feuerengel
+ --- (de): database\G\Girls Under Glass\Zyklus\Ohne Dich
+ --- (de): database\G\Goethes Erben\1. Kapitel\Der Spiegel
+ --- (de): database\G\Goethes Erben\1. Kapitel\Spuren Im Schnee
+ --- (de): database\G\Goethes Erben\Dazwischen\Kopfstimme
+ --- (de): database\G\Goethes Erben\Dazwischen\Lebend lohnt es
+ --- (de): database\G\Goethes Erben\Dazwischen\Negativmaske
+ --- (de): database\G\Goethes Erben\Dazwischen\Schattendenken
+ --- (de): database\G\Goethes Erben\Dazwischen\Zwischenzeit
+ --- (de): database\G\Goethes Erben\Der Traum an die Erinnerung\Iphigenie
+ --- (de): database\G\Goethes Erben\Kondition-Macht! 2.Akt\Marionetten
+ --- (de): database\G\Goethes Erben\Nichts Bleibt Wie Es War\Ganz Still
+ --- (de): database\G\Goethes Erben\Nichts Bleibt Wie Es War\Himmelgrau
+ --- (de): database\G\Goethes Erben\Nichts Bleibt Wie Es War\Nichts bleibt wie es war
+ --- (de): database\G\Goethes Erben\Nichts Bleibt Wie Es War\Paradoxe Stille
+ --- (de): database\G\Goethes Erben\Nichts Bleibt Wie Es War\Vermisster Traum
+ --- (de): database\G\Goethes Erben & Peter Heppner\Glasgarten\Glasgarten
+ --- (de): database\G\Grossstadtgeflüster\Bis einer heult!!!\Haufenweise Scheiße
+ --- (de): database\G\Grossstadtgeflüster\Fickt-Euch-Allee\Fickt-Euch-Allee
+ --- (de): database\G\Grossstadtgeflüster\Muss laut sein\Ich muss gar nix
+ --- (de): database\G\Grossstadtgeflüster\Oh, ein Reh!\1000 Tonnen Glück
+ --- (de): database\G\Grossstadtgeflüster\Oh, ein Reh!\Meine Sonne
+ --- (de): database\G\Grossstadtgeflüster\Oh, ein Reh!\Sprengstoff
+ --- (de): database\H\Herbert Grönemeyer\Kein Mensch ist Illegal\Feuerlicht
+ --- (de): database\H\Heretoir\Heretoir\Graue Bauten
+ --- (de): database\H\Heretoir\Heretoir\Weltschmerz
+ --- (de): database\H\Herr von Grau\Heldenplätze\Heldenplätze
+ --- (de): database\I\In Extremo\Kunstraub\Alles schon gesehen
+ --- (de): database\I\In Extremo\Kunstraub\Belladonna
+ --- (de): database\I\In Extremo\Kunstraub\Der die Sonne schlafen schickt
+ --- (de): database\I\In Extremo\Kunstraub\Die Beute
+ --- (de): database\I\In Extremo\Kunstraub\Doof
+ --- (de): database\I\In Extremo\Kunstraub\Du und ich
+ --- (de): database\I\In Extremo\Kunstraub\Feuertaufe
+ --- (de): database\I\In Extremo\Kunstraub\Gaukler
+ --- (de): database\I\In Extremo\Kunstraub\Himmel und Hölle
+ --- (de): database\I\In Extremo\Kunstraub\Kunstraub
+ --- (de): database\I\In Extremo\Kunstraub\Lebemann
+ --- (de): database\I\In Extremo\Kunstraub\Wege ohne Namen
+ --- (de): database\I\In Extremo\Sängerkrieg\Frei zu sein
+ --- (hi): database\I\Infected Mushroom\Army of Mushrooms\Send Me an Angel
+ --- (de): database\I\Irie Révoltés\Allez!\Continuer
+ --- (fr): database\I\Irie Révoltés\Irie Révoltés\Jamais
+ --- (de): database\I\Irie Révoltés\Irie Révoltés\Jetzt
+ --- (fr): database\I\Irie Révoltés\Irie Révoltés\Stopper
+ --- (de): database\I\Irie Révoltés\Mouvement Mondial\Antifaschist
+ --- (de): database\I\Irie Révoltés\Mouvement Mondial\Aufstehn
+ --- (fr): database\I\Irie Révoltés\Mouvement Mondial\Explosion
+ --- (fr): database\I\Irie Révoltés\Mouvement Mondial\Merci
+ --- (fr): database\I\Irie Révoltés\Voyage\Rebelles
+ --- (de): database\I\Isolation Berlin\Kein Mensch ist Illegal\Alles Grau
+ --- (de): database\J\Jan Delay\Kein Mensch ist Illegal\Sie kann nicht tanzen
+ --- (de): database\K\Killerpilze\Mit Pauken Und Raketen\Liebmichhassmich
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\AMG Mercedes
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Ariane
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Boom Boom Boom
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Ehrenlos
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Freier Fall
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Geld
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Glücklich und satt
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Hurra die Welt geht unter
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Käfigbett
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Superstars
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Verrückt nach dir
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Was würde Manny Marc tun
+ --- (de): database\K\KIZ\Hurra die Welt geht unter\Wir
+ --- (de): database\K\KIZ\Kein Mensch ist Illegal\Hurra die Welt geht unter
+ --- (hi): database\K\Knife Party\100% No Modern Talking\Fire Hive
+ --- (de): database\K\Knorkator\Das nächste Album aller Zeiten\Alter Mann
+ --- (de): database\K\Knorkator\Das nächste Album aller Zeiten\Du bist so still
+ --- (de): database\K\Knorkator\Das nächste Album aller Zeiten\Eigentum
+ --- (fr): database\K\Knorkator\Das nächste Album aller Zeiten\Franz Hose
+ --- (de): database\K\Knorkator\Das nächste Album aller Zeiten\Für Meine Fans
+ --- (de): database\K\Knorkator\Das nächste Album aller Zeiten\Gv
+ --- (de): database\K\Knorkator\Das nächste Album aller Zeiten\Lied vom Pferd
+ --- (de): database\K\Knorkator\Das nächste Album aller Zeiten\Nur Mal Angenommen
+ --- (de): database\K\Kraftklub\In Schwarz\Alles wegen Dir
+ --- (de): database\K\Kraftklub\In Schwarz\Unsere Fans
+ --- (de): database\K\Kraftklub\Kein Mensch ist Illegal\Schüsse in die Luft
+ --- (de): database\K\Kraftklub\Mit K\Ich will nicht nach Berlin
+ --- (de): database\K\Kraftklub\Mit K\Songs für Liam
+ --- (eo): database\L\La Porkoj\Jen\Jen
+ --- (es): database\L\Linkin Park\A Thousand Suns\Empty Spaces
+ --- (ja): database\L\Linkin Park\A Thousand Suns\Jornada Del Muerto
+ --- (haw): database\L\Lisa Gerrard\Gladiator - Music From The Motion Picture\Now We Are Free
+ --- (de): database\L\Lunar Aurora\Hoagascht\Geisterwoid
+ --- (de): database\L\Lunar Aurora\Hoagascht\Im Gartn
+ --- (de): database\L\Lunar Aurora\Hoagascht\Nachteule
+ --- (lb): database\L\Lunar Aurora\Hoagascht\Reng
+ --- (de): database\L\Lunar Aurora\Hoagascht\Sterna
+ --- (de): database\L\Lunar Aurora\Hoagascht\Wedaleichtn
+ --- (de): database\M\Madsen\Goodbye Logik\Du schreibst Geschichte
+ --- (de): database\M\Madsen\Wo es beginnt\Generation im Arsch
+ --- (de): database\M\Marcus Wiebusch\Kein Mensch ist Illegal\Jede Zeit hat ihre Pest
+ --- (de): database\M\Marsimoto\Grüner Samt\Grüner Samt
+ --- (de): database\M\Marsimoto\Grüner Samt\Mein Kumpel Spalding
+ --- (de): database\M\Marteria\Kein Mensch ist Illegal\Welt der Wunder
+ --- (de): database\M\Marteria\Zum Glück in die Zukunft II\Bengalische Tiger
+ --- (de): database\M\Marteria\Zum Glück in die Zukunft II\Kids (2 Finger an den Kopf)
+ --- (de): database\M\Megaherz\5\Ja Genau
+ --- (de): database\M\Megaherz\Götterdämmerung\Jagdzeit
+ --- (de): database\M\Megaherz\Götterdämmerung\Kopf Oder Zahl
+ --- (de): database\M\Megaherz\Totgesagte Leben Länger\5. März
+ --- (de): database\M\Megaherz\Totgesagte Leben Länger\Miststück
+ --- (de): database\M\Moop Mama\Deine Mutter\Anger Management
+ --- (de): database\M\Moop Mama\Deine Mutter\Geh Mit Uns
+ --- (de): database\M\Moop Mama\Deine Mutter\Helden
+ --- (de): database\M\Moop Mama\Liebe\Liebe
+ --- (de): database\M\Muff Potter\Von Wegen\Wenn dann das hier
+ --- (de): database\N\Nicole\Ein bisschen Frieden\Ein bisschen Frieden
+ --- (de): database\N\Nicole\Ein bisschen Frieden\Wir sind keine Kinder mehr
+ --- (de): database\N\Nicole\Flieg nicht so hoch, mein kleiner Freund\Flieg nicht so hoch, mein kleiner Freund
+ --- (de): database\N\Nicole\Papillon\Papillon
+ --- (de): database\N\Niels Frevert\Kein Mensch ist Illegal\Das mit dem Glücklichsein ist relativ
+ --- (de): database\N\Nocte Obducta\Nektar Teil 2\Atme
+ --- (de): database\N\Nocte Obducta\Nektar Teil 2\Es fließe Blut
+ --- (de): database\N\Nocte Obducta\Nektar Teil 2\Nektar
+ --- (de): database\O\OK KID\Gute Menschen\Gute Menschen
+ --- (de): database\O\OK KID\Kein Mensch ist Illegal\Stadt ohne Meer
+ --- (de): database\O\OK KID\OK KID\Am Ende
+ --- (de): database\O\OK KID\OK KID\Einsatz
+ --- (de): database\O\OK KID\OK KID\Kaffee warm
+ --- (de): database\O\OK KID\OK KID\Stadt ohne Meer
+ --- (de): database\O\OK KID\OK KID\Verschwende mich
+ --- (sv): database\O\Opeth\Watershed\Den Standiga Resan
+ --- (pl): database\P\Panic At The Disco\A Fever You Can't Sweat Out\Introduction
+ --- (de): database\P\Pascow\Diene der Party\Die Realität ist schuld, dass ich so bin
+ --- (de): database\P\Pascow\Diene der Party\Diene der Party
+ --- (de): database\P\Pascow\Diene der Party\Im Raumanzug
+ --- (de): database\P\Pascow\Diene der Party\Zeit des Erwachens
+ --- (de): database\P\Pascow\Diene der Party\Zwickau sehen und sterben
+ --- (de): database\P\Pascow\Kein Mensch ist Illegal\Zeit des Erwachens
+ --- (de): database\P\Prinz Pi\Illuminati\Mann vom Mars
+ --- (de): database\P\Prinz Pi\Kompass ohne Norden\Ende Blut, alles Blut
+ --- (de): database\P\Prinz Pi\Neopunk\Kann es sein
+ --- (de): database\P\Prinz Pi\Teenage Mutant Horror Show 2\3 Minuten
+ --- (de): database\P\Prinz Pi\Zeitlos\Totentanz
+ --- (de): database\R\Rantanplan\20359\Antifa Fanclub
+ --- (de): database\R\Rasta Knast\Bandera Pirata\Räuberstaat
+ --- (de): database\R\Rasta Knast\Die Katze beisst in Draht\Für immer Rebell
+ --- (de): database\R\Rasta Knast\Legal Kriminal\Legale Verbrecher
+ --- (de): database\S\Samsas Traum\Dwarf Craving (An Essence Of Dwarfs)\Schlaf in den Flammen (Wumpscut Remix For Samsa's Traum)
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Auf Den Spiralnebeln
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Das Schwert Deiner Sonne
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Das Zeitalter Der Bäume
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Der Tag Stummer Rache
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Durch Springende Lippen
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Heiliges Herz
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Im Auge Des Sturms
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Liebeslied
+ --- (de): database\S\Samsas Traum\Heiliges Herz - Das Schwert Deiner Sonne\Schlaf In Den Flammen
+ --- (de): database\S\Schandmaul\Unendlich\Baum des Lebens
+ --- (de): database\S\Schandmaul\Unendlich\Bunt und nicht braun
+ --- (de): database\S\Schandmaul\Unendlich\Der Teufel
+ --- (de): database\S\Schandmaul\Unendlich\Euch zum Geleit
+ --- (de): database\S\Schandmaul\Unendlich\In Deinem Namen
+ --- (de): database\S\Schandmaul\Unendlich\Mein Bildnis
+ --- (de): database\S\Schandmaul\Unendlich\Mit der Flut
+ --- (de): database\S\Schandmaul\Unendlich\Mittsommer
+ --- (de): database\S\Schandmaul\Unendlich\Märchenmond
+ --- (de): database\S\Schandmaul\Unendlich\Saphira
+ --- (de): database\S\Schandmaul\Unendlich\Tippelbruder
+ --- (de): database\S\Schandmaul\Unendlich\Trafalgar
+ --- (de): database\S\Sielwolf\Nachtstrom\Verstärker Zerstört
+ --- (es): database\S\Ska-P\99%\Radio Falacia
+ --- (es): database\S\Ska-P\99%\Victoria
+ --- (es): database\S\Ska-P\Incontrolable\Intifada
+ --- (pt): database\S\Skank\Cosmotron\Vou Deixar.txt
+ --- (de): database\S\Slime\Live Punk Club\Zu kalt
+ --- (de): database\S\Slime\Live Punk Club\Zweifel
+ --- (de): database\S\Slime\Schweineherbst\Brüllen, Zertrümmern Und Weg
+ --- (de): database\S\Slime\Schweineherbst\Goldene Türme
+ --- (de): database\S\Slime\Slime I\Bullenschweine
+ --- (de): database\S\Slime\Viva la muerte\Viva la muerte
+ --- (de): database\S\Supershirt\8000 Mark\8000 Mark
+ --- (de): database\S\Supershirt\8000 Mark\Haue
+ --- (de): database\S\Supershirt\8000 Mark\Nachtjacke
+ --- (de): database\S\Supershirt\8000 Mark\Prinzessin Bad
+ --- (de): database\S\Supershirt\Audiolith - Doin' Our Thing\Nachtjacke
+ --- (de): database\S\Supershirt\Kunstwerk\Und Dann Ganz Lange Nichts Mehr
+ --- (de): database\T\Tapete\Der Wille Lenkt Die Tat\Schwarzfahrt
+ --- (de): database\T\Terrorgruppe\Nonstop Aggropop\Mein Skateboard ist wichtiger als Deutschland
+ --- (de): database\T\Terrorgruppe\Nonstop Aggropop\Nazis im Haus
+ --- (sk): database\T\The Prodigy\The Day Is My Enemy\Rok-Weiler
+ --- (de): database\T\The Skatoons\Am Arsch die Räuber\Endlich Sommerzeit
+ --- (de): database\T\The Skatoons\High Noon Am Hansaplatz\Freunde
+ --- (de): database\T\Thees Uhlmann\Kein Mensch ist Illegal\Im Sommer nach dem Krieg
+ --- (de): database\T\Tocotronic\Kein Mensch ist Illegal\Prolog
+ --- (de): database\T\Ton Steine Scherben\Kein Mensch ist Illegal\Durch die Wüste
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Allein Machen Sie Dich Ein
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Der Traum Ist Aus
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Die Letzte Schlacht Gewinnen Wir
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Feierabend
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Keine Macht Für Niemand
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Komm Schlaf Bei Mir
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Mensch Meier
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Menschenjäger
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Paul Panzers Blues
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Rauch-Haus-Song
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Schritt Für Schritt Ins Paradies
+ --- (de): database\T\Ton Steine Scherben\Keine Macht für Niemand\Wir Müssen Hier Raus
+ --- (de): database\T\Ton Steine Scherben\Wenn die Nacht am tiefsten\Halt dich an deiner Liebe fest
+ --- (de): database\T\Turbostaat\Harm Rochel\Harm Rochel
+ --- (de): database\T\Turbostaat\Kein Mensch ist Illegal\Tut es doch weh
+ --- (de): database\T\Turbostaat\Stadt der Angst\Sohnemann Heinz
+ --- (de): database\T\Turbostaat\Vormann Leiss\Am Ende einer Reise
+ --- (de): database\T\Turbostaat\Vormann Leiss\Bei Fugbaums
+ --- (de): database\T\Turbostaat\Vormann Leiss\Der Frosch hat's versaut
+ --- (de): database\T\Turbostaat\Vormann Leiss\Harm Rochel
+ --- (de): database\T\Turbostaat\Vormann Leiss\Hau ab die Schildkröte
+ --- (de): database\T\Turbostaat\Vormann Leiss\Haubentaucherwelpen
+ --- (de): database\T\Turbostaat\Vormann Leiss\Insel
+ --- (de): database\T\Turbostaat\Vormann Leiss\Nach fest kommt ab
+ --- (de): database\T\Turbostaat\Vormann Leiss\Schalenka Hase
+ --- (de): database\T\Turbostaat\Vormann Leiss\Vormann Leiss
+ --- (de): database\V\Von Brücken\Kein Mensch ist Illegal\Blendgranaten
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\13 Wünsche
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\3008
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Alptraumsong
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Das Ende
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Der Anfang vom Ende
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Der kleine Vampir
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Der Tag an dem die Welt unterging
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Feueralarm
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Glühwürmchen
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Mein Baumhaus
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Oh Mama mach Kartoffelsalat
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Sabine die Zeitmaschine
+ --- (nl): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Schiff Ahoi
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Superföhn Bananendate
+ --- (de): database\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Wir gehen an Land
+ --- (de): database\W\Wizo\Punk gibt's nicht umsonst! (Teil III)\Ganz klar gegen Nazis
+ --- (te): database\W\Wumpscut\Cannibal Anthem\Cannibal Anthem
+ --- (de): database\W\Wumpscut\Embryodead\Embryodead
+ --- (de): database\Z\Zaunpfahl\Musik\Warum
+ --- (de): database\Z\ZSK\Discontent Hearts And Gasoline\13 Minuten
+ --- (de): database\Z\ZSK\Discontent Hearts And Gasoline\Festung Europa
+ --- (de): database\Z\ZSK\Discontent Hearts And Gasoline\Gestorben Wird Später
+ --- (de): database\Z\ZSK\Discontent Hearts And Gasoline\Irgendwann
+ --- (de): database\Z\ZSK\Discontent Hearts And Gasoline\Scherben
+ --- (de): database\Z\ZSK\Discontent Hearts And Gasoline\Wenn Der Letzte Vorhang Fällt
+ --- (de): database\Z\ZSK\Discontent Hearts And Gasoline\Wenn So Viele Schweigen
+ --- (de): database\Z\ZSK\From Protest To Resistance\Kein Mensch Ist Illegal
+ --- (de): database\Z\ZSK\From Protest To Resistance\Keine Angst
+ --- (de): database\Z\ZSK\Herz Für Die Sache\Antifascista
+ --- (de): database\Z\ZSK\If Liberty Means Anything At All\Verlieren
+ --- (de): database\Z\ZSK\If Liberty Means Anything At All\Wir müssen hier raus
+ --- (de): database\Z\ZSK\Riot Radio\Alienation
+ --- (de): database\Z\ZSK\Riot Radio\Mein Staat

@@ -6,6 +6,7 @@ import math
 import nltk
 import os
 import time
+import shutil
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob #Required for language detection
@@ -19,38 +20,44 @@ nltk.download('vader_lexicon')
 
 def categorizeSong(albumPath, song, sentiment):
     inputPath = os.path.join(albumPath, song)
-    outputPath = os.path.join(outputDir, str(sentiment),song)
-
-    lyrics = ''
+    outputPath = os.path.join(outputDir, sentiment, song)
 
     try:
-        #with open(inputPath, 'r', encoding='utf-8',errors='ignore') as lines:
-        with open(inputPath, 'r', encoding='utf-8') as lines:
-            for line in lines:
-                # Cut of the metadata part of the lyrics
-                if line.startswith('____'):
-                    break
-                lyrics += ' ' + line
+        shutil.copyfile(inputPath, outputPath)
     except Exception as e:
-        print('Could not open source file on song categorization. Error: ', e)
-
-    try:
-        #outputFile = open(outputPath, 'w', encoding='utf-8',errors='ignore')
-        outputFile = open(outputPath, 'w', encoding='utf-8')
-        outputFile.write(lyrics)
-    except Exception as e:
-        print('Could not write destination file on song categorization. Error: ', e)
+        print('Could copy file on song categorization. Error: ', e)
         print('Failed song: ', inputPath)
 
-    finally: 
-        outputFile.close()
+def removeLyricMetadata(lyrics):
+    cleanLyrics = ''
+    for line in lyrics.splitlines():
+        # Cut of the metadata part of the lyrics
+        if line.startswith('____'):
+            return cleanLyrics
+        #lyrics += ' ' + line
+        cleanLyrics += line + '\n'
+    return cleanLyrics
 
 def cleanupOutputDir(outputDir):
+    # Delete all files and folders
     count = 0
     for path, dirs, files in os.walk(outputDir):
         for file in files:
             os.remove(os.path.join(path, file))
             count += 1
+    
+    # Initialize clean folders
+    if not os.path.exists(os.path.join(outputDir, '1_negative')):
+        os.makedirs(os.path.join(outputDir, '1_negative'))
+    if not os.path.exists(os.path.join(outputDir, '2_negative_neutral')):
+        os.makedirs(os.path.join(outputDir, '2_negative_neutral'))
+    if not os.path.exists(os.path.join(outputDir, '3_neutral')):
+        os.makedirs(os.path.join(outputDir, '3_neutral'))
+    if not os.path.exists(os.path.join(outputDir, '4_positive_neutral')):
+        os.makedirs(os.path.join(outputDir, '4_positive_neutral'))
+    if not os.path.exists(os.path.join(outputDir, '5_positive')):
+        os.makedirs(os.path.join(outputDir, '5_positive'))
+
     return count
 
 def removeStopWords(lyrics):
@@ -74,6 +81,14 @@ failedSongsCount = 0
 failedSongs = []
 nonEnglishSongsCount = 0
 nonEnglishSongs = []
+
+songsByCategory = {
+  '1_negative': 0,
+  '2_negative_neutral': 0,
+  '3_neutral': 0,
+  '4_positive_neutral': 0,
+  '5_positive': 0
+}
 
 startTime = time.time()
 
@@ -113,26 +128,25 @@ for letter in sorted(os.listdir(dbDir)):
                             if os.path.isfile(songPath):
                                 try:
                                     #lyrics = open(songPath, 'r', encoding='utf-8',errors='ignore').read().strip()
-                                    lyrics = open(songPath, 'r', encoding='utf-8').read().strip()
-
-                                    # THINGS I STILL NEED TO DO: 
-                                    # 1) DONE - Clean up the destination folders BEFORE I run the algorithm
-                                    # 2) DONE - Verify song language and use it only if it's English
-                                    # 3) Clean metadata BEFORE getting the sentiment
-                                    # 4) DONE - Determine if I need to remove stop words
+                                    rawLyrics = open(songPath, 'r', encoding='utf-8').read().strip()
+                                    
+                                    # Remove metadata before I categorize the song
+                                    lyrics = removeLyricMetadata(rawLyrics)
 
                                     # For some reason, some lyrics are empty. So we'll test that. 
                                     if lyrics != '':
                                         # Perform analysis ONLY if lyrics are English
-                                        if detectLanguage(lyrics) != 'en':
+                                        songLanguage = detectLanguage(lyrics)
+                                        if songLanguage != 'en':
                                             nonEnglishSongsCount += 1
+                                            nonEnglishSongs.append('(' + songLanguage + '): ' + songPath)
                                         else:
                                             # Run sentiment analyzis and get the compound score. Categorize the lyric with a sentiment: 1 to 5: 
-                                            # 1: < -0.6
-                                            # 2: >= -0.6 and < -0.2
-                                            # 3: >= -0.2 and <= 0.2
-                                            # 4: > 0.2 and <= 0.6
-                                            # 5: > 0.6
+                                            # 1 NEGATIVE: < -0.6
+                                            # 2 NEGATIVE-NEUTRAL: >= -0.6 and < -0.2
+                                            # 3 NEUTRAL: >= -0.2 and <= 0.2
+                                            # 4 POSITIVE-NEUTRAL: > 0.2 and <= 0.6
+                                            # 5 POSITIVE: > 0.6
 
                                             # Remove stop words - EVALUATE IF THIS YELDS BETTER RESULTS OR NOT
                                             lyricsNoStopWords = removeStopWords(lyrics)
@@ -145,15 +159,20 @@ for letter in sorted(os.listdir(dbDir)):
                                             # ... when we DO categorize songs and want to make them available for search, 
                                             # they will be stored in their original form.
                                             if (compound < -0.6):
-                                                categorizeSong(albumPath, song, 1)
+                                                categorizeSong(albumPath, song, '1_negative')
+                                                songsByCategory['1_negative'] += 1
                                             elif (compound >= -0.6) and (compound < -0.2):
-                                                categorizeSong(albumPath, song, 2)
+                                                categorizeSong(albumPath, song, '2_negative_neutral')
+                                                songsByCategory['2_negative_neutral'] += 1
                                             elif (compound >= -0.2) and (compound <= 0.2):
-                                                categorizeSong(albumPath, song, 3)
+                                                categorizeSong(albumPath, song, '3_neutral')
+                                                songsByCategory['3_neutral'] += 1
                                             elif (compound > 0.2) and (compound <= 0.6):
-                                                categorizeSong(albumPath, song, 4)
+                                                categorizeSong(albumPath, song, '4_positive_neutral')
+                                                songsByCategory['4_positive_neutral'] += 1
                                             elif (compound > 0.6):
-                                                categorizeSong(albumPath, song, 5)
+                                                categorizeSong(albumPath, song, '5_positive')
+                                                songsByCategory['5_positive'] += 1
 
                                             successes += 1
 
@@ -164,32 +183,46 @@ for letter in sorted(os.listdir(dbDir)):
                                     failedSongsCount += 1
 
                                 # Print status at every 100 songs
-                                if (successes > 0) and (math.remainder(successes + failedSongsCount, 100) == 0):
+                                if (successes > 0) and ((successes + failedSongsCount) % 100 == 0):
                                     percentage = round((successes + failedSongsCount) / fileCount * 100, 2)
                                     print(str(successes + failedSongsCount), 'songs analyzed...', '(', str(percentage),'% )')
 
-print('Finished organizing songs. Successes: ',str(successes),'Failures: ',str(failedSongsCount))
+print(str(successes + failedSongsCount), 'songs analyzed. (100%)')
+
+print('Finished organizing songs. Successes: ',str(successes),'; Failures: ',str(failedSongsCount), '; Non-English: ',str(nonEnglishSongsCount), '; Total: ', str(successes + failedSongsCount + nonEnglishSongsCount))
 
 # Write log:
 try: 
     endTime = time.time()
     elapsedTime = endTime - startTime
-    logFile = open('sentiment-analysis.log','w')
+    logFile = open('sentiment-analysis.log','w', encoding="utf-8")
     logFile.write('Started running...: ' + time.asctime(time.localtime(startTime)) +'\n')
     logFile.write('Finished running..: ' + time.asctime(time.localtime(endTime))+'\n')
-    logFile.write('Elapsed time......: ' + str(round(elapsedTime,2)) + ' seconds.' + '\n')
+    logFile.write('Elapsed time......: ' + str(round(elapsedTime,2)) + ' seconds (about ' + str(round(round(elapsedTime,2) / 60,1)) + ' minutes).\n')
     logFile.write('Songs categorized.: ' + str(successes)+'\n')
+    logFile.write('Songs per category: ' + '\n' )
+    logFile.write(' --- 1-Negative........: ' + str(songsByCategory['1_negative']) +'\n')
+    logFile.write(' --- 2-Negative/Neutral: ' + str(songsByCategory['2_negative_neutral']) +'\n')
+    logFile.write(' --- 3-Neutral.........: ' + str(songsByCategory['3_neutral']) +'\n')
+    logFile.write(' --- 4-Positive/Neutral: ' + str(songsByCategory['4_positive_neutral']) +'\n')
+    logFile.write(' --- 5-Positive........: ' + str(songsByCategory['5_positive']) +'\n')
     logFile.write('Songs failed......: ' + str(failedSongsCount)+'\n')
-    logFile.write('Non-english count.: ' + str(nonEnglishSongsCount)+'\n')
-    logFile.write('Non-english songs.: ' + str(nonEnglishSongs)+'\n')
-
     for failedSong in failedSongs:
-        logFile.writelines(failedSong)
+        try: 
+            logFile.write(' --- ' + failedSong +'\n')
+        except Exception as e: 
+            logFile.write(' --- <FAILED TO WRITE SONG NAME IN LOG FILE> (Exception: ' + str(e) + ')' + '\n')
+    
+    logFile.write('Non-english songs.: ' + str(nonEnglishSongsCount)+'\n')    
+    for nonEnglishSong in nonEnglishSongs:
+        try: 
+            logFile.write(' --- ' + nonEnglishSong +'\n')
+        except Exception as e: 
+            logFile.write(' --- <FAILED TO WRITE SONG NAME IN LOG FILE> (Exception: ' + str(e) + ')' + '\n')
 
     print('Log file written successfully: sentiment-analysis.log')
-
 except Exception as e:
-    print('Failed to write log file. Exception: ', e)
+    print('Failed to write log file. Exception: ', str(e))
 
 finally:
     logFile.close()
