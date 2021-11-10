@@ -75,12 +75,8 @@ def cleanupOutputDir(outputDir):
 def categorizeSongs():
     print('Attempting to download required package files...')
 
-    downloadOk = True
     # Packages required for tokenization, stopwords, and sentiment analysis
     if (not (nltk.download('punkt', quiet=True))) or (not (nltk.download('stopwords', quiet=True))) or (not nltk.download('vader_lexicon', quiet=True)):
-        downloadOk = False
-
-    if not downloadOk:
         print('Failed to download required packages. Please verify your internet connection and try again.')
         return
     else: 
@@ -132,7 +128,7 @@ def categorizeSongs():
     print('Deleted', str(filesDeleted),'files that were previously organized.')
     print('')
 
-    print('Starting Song Sentiment Analysis on', os.path.join(os.path.curdir, dbDir))
+    print('Starting Song Sentiment Analysis on directory', os.path.join(os.path.curdir, dbDir), ' at ' + hour + ':' + minutes + ':' + seconds  + ' on ' + month  + '/' + day + '/' + year)
     # Count all files for logging purposes
     print('Counting songs in source directories...')
     fileCount = sum(len(files) for _, _, files in os.walk(dbDir))
@@ -141,7 +137,6 @@ def categorizeSongs():
 
     # Let's see the sentiment for all lyrics on our DB: 
     startTime = time.time()
-    print('Starting song categorization at ' + hour + ':' + minutes + ':' + seconds  + ' on ' + month  + '/' + day + '/' + year)
     for letter in sorted(os.listdir(dbDir)):
         # For each letter...
         letterPath = os.path.join(dbDir, letter)
