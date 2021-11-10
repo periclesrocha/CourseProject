@@ -15,7 +15,7 @@ Our proposal is to build a recommendation system that will suggest songs to a us
 ## Method
 We have obtained a database of song lyrics from a diverse set of music genres. Our application will determine the mood of each song using sentiment analysis on each of the song’s lyrics, and build a sentiment index. This sentiment will be a 1-5 scale, where 1 represents negative sentiment and 5 represents positive. Based on the sentiment index, we will use text retrieval techniques to find songs that match the terms provided by the user, within the songs that match the desired mood. Finally, we will provide suggested song names to the user, ordered by relevance, based on the content of the song lyrics.
 
- ![Method](images/method.png)
+ ![Method](_images/method.png)
 
 
 Songs will be indexed for sentiment and key words based on their lyrics only. We will not analyze melodies or any audio content. This application will be limited to the English language. We will use Python as our programming language. 
