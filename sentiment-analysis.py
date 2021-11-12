@@ -175,11 +175,11 @@ def categorizeSongs():
                                                 nonEnglishSongs.append('(' + songLanguage + '): ' + songPath)
                                             else:
                                                 # Run sentiment analyzis and get the compound score. Categorize the song lyrics with a sentiment 1 to 5: 
-                                                # 1 very_bad        : compound  < -0.6
-                                                # 2 NEGATIVE-NEUTRAL: compound >= -0.6 and < -0.2
-                                                # 3 NEUTRAL         : compound >= -0.2 and <= 0.2
-                                                # 4 very_good-NEUTRAL: compound  >  0.2 and <= 0.6
-                                                # 5 very_good        : compound  >  0.6
+                                                # 1 Very bad    : compound  < -0.6
+                                                # 2 Bad         : compound >= -0.6 and < -0.2
+                                                # 3 Neutral     : compound >= -0.2 and <= 0.2
+                                                # 4 Good        : compound  >  0.2 and <= 0.6
+                                                # 5 Very Good   : compound  >  0.6
 
                                                 # Remove stop words - EVALUATE IF THIS YELDS BETTER RESULTS OR NOT
                                                 lyricsNoStopWords = removeStopWords(lyrics)
