@@ -59,16 +59,16 @@ def cleanupOutputDir(outputDir):
             count += 1
     
     # Initialize clean folders
-    if not os.path.exists(os.path.join(outputDir, '1_negative')):
-        os.makedirs(os.path.join(outputDir, '1_negative'))
-    if not os.path.exists(os.path.join(outputDir, '2_negative_neutral')):
-        os.makedirs(os.path.join(outputDir, '2_negative_neutral'))
+    if not os.path.exists(os.path.join(outputDir, '1_very_bad')):
+        os.makedirs(os.path.join(outputDir, '1_very_bad'))
+    if not os.path.exists(os.path.join(outputDir, '2_bad')):
+        os.makedirs(os.path.join(outputDir, '2_bad'))
     if not os.path.exists(os.path.join(outputDir, '3_neutral')):
         os.makedirs(os.path.join(outputDir, '3_neutral'))
-    if not os.path.exists(os.path.join(outputDir, '4_positive_neutral')):
-        os.makedirs(os.path.join(outputDir, '4_positive_neutral'))
-    if not os.path.exists(os.path.join(outputDir, '5_positive')):
-        os.makedirs(os.path.join(outputDir, '5_positive'))
+    if not os.path.exists(os.path.join(outputDir, '4_good')):
+        os.makedirs(os.path.join(outputDir, '4_good'))
+    if not os.path.exists(os.path.join(outputDir, '5_very_good')):
+        os.makedirs(os.path.join(outputDir, '5_very_good'))
 
     return count
 
@@ -114,11 +114,11 @@ def categorizeSongs():
 
     # Holds the count of songs categorized in each category
     songsByCategory = {
-    '1_negative': 0,
-    '2_negative_neutral': 0,
+    '1_very_bad': 0,
+    '2_bad': 0,
     '3_neutral': 0,
-    '4_positive_neutral': 0,
-    '5_positive': 0
+    '4_good': 0,
+    '5_very_good': 0
     }
 
     print('')
@@ -175,11 +175,11 @@ def categorizeSongs():
                                                 nonEnglishSongs.append('(' + songLanguage + '): ' + songPath)
                                             else:
                                                 # Run sentiment analyzis and get the compound score. Categorize the song lyrics with a sentiment 1 to 5: 
-                                                # 1 NEGATIVE        : compound  < -0.6
+                                                # 1 very_bad        : compound  < -0.6
                                                 # 2 NEGATIVE-NEUTRAL: compound >= -0.6 and < -0.2
                                                 # 3 NEUTRAL         : compound >= -0.2 and <= 0.2
-                                                # 4 POSITIVE-NEUTRAL: compound  >  0.2 and <= 0.6
-                                                # 5 POSITIVE        : compound  >  0.6
+                                                # 4 very_good-NEUTRAL: compound  >  0.2 and <= 0.6
+                                                # 5 very_good        : compound  >  0.6
 
                                                 # Remove stop words - EVALUATE IF THIS YELDS BETTER RESULTS OR NOT
                                                 lyricsNoStopWords = removeStopWords(lyrics)
@@ -192,20 +192,20 @@ def categorizeSongs():
                                                 # ... when we DO categorize songs and want to make them available for search, 
                                                 # they will be stored in their original form.
                                                 if (compound < -0.6):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '1_negative')
-                                                    songsByCategory['1_negative'] += 1
+                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '1_very_bad')
+                                                    songsByCategory['1_very_bad'] += 1
                                                 elif (compound >= -0.6) and (compound < -0.2):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '2_negative_neutral')
-                                                    songsByCategory['2_negative_neutral'] += 1
+                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '2_bad')
+                                                    songsByCategory['2_bad'] += 1
                                                 elif (compound >= -0.2) and (compound <= 0.2):
                                                     copyToCategorizedDir(albumPath, song, album, artist, outputDir, '3_neutral')
                                                     songsByCategory['3_neutral'] += 1
                                                 elif (compound > 0.2) and (compound <= 0.6):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '4_positive_neutral')
-                                                    songsByCategory['4_positive_neutral'] += 1
+                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '4_good')
+                                                    songsByCategory['4_good'] += 1
                                                 elif (compound > 0.6):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '5_positive')
-                                                    songsByCategory['5_positive'] += 1
+                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '5_very_good')
+                                                    songsByCategory['5_very_good'] += 1
 
                                                 successesCount += 1
 
@@ -233,11 +233,11 @@ def categorizeSongs():
     print(' --- Empty files*..........:', str(emptyLyricsCount))
     print(' --- Failures*.............:', str(failedSongsCount))
     print(' --- Songs in each category:')
-    print('           1-Negative.........:', str(songsByCategory['1_negative']))
-    print('           2-Negative/Neutral.:', str(songsByCategory['2_negative_neutral']))
+    print('           1-Very Bad.........:', str(songsByCategory['1_very_bad']))
+    print('           2-Bad..............:', str(songsByCategory['2_bad']))
     print('           3-Neutral..........:', str(songsByCategory['3_neutral']))
-    print('           4-Positive/Neutral.:', str(songsByCategory['4_positive_neutral']))
-    print('           5-Positive.........:', str(songsByCategory['5_positive']))
+    print('           4-Good.............:', str(songsByCategory['4_good']))
+    print('           5-Very Good........:', str(songsByCategory['5_very_good']))
     print('   * Check the log file for list of songs')
     print('')
     # Write log file
@@ -257,11 +257,11 @@ def categorizeSongs():
         logFile.write('Non-english songs...: ' + str(nonEnglishSongsCount)+'\n')    
         logFile.write('Songs failed........: ' + str(failedSongsCount) +'\n')
         logFile.write('Songs per category..: ' + '\n' )
-        logFile.write(' --- 1-Negative........: ' + str(songsByCategory['1_negative']) +'\n')
-        logFile.write(' --- 2-Negative/Neutral: ' + str(songsByCategory['2_negative_neutral']) +'\n')
-        logFile.write(' --- 3-Neutral.........: ' + str(songsByCategory['3_neutral']) +'\n')
-        logFile.write(' --- 4-Positive/Neutral: ' + str(songsByCategory['4_positive_neutral']) +'\n')
-        logFile.write(' --- 5-Positive........: ' + str(songsByCategory['5_positive']) +'\n')
+        logFile.write(' --- 1-Very bad.........: ' + str(songsByCategory['1_very_bad']) +'\n')
+        logFile.write(' --- 2-Bad..............: ' + str(songsByCategory['2_bad']) +'\n')
+        logFile.write(' --- 3-Neutral..........: ' + str(songsByCategory['3_neutral']) +'\n')
+        logFile.write(' --- 4-Good.............: ' + str(songsByCategory['4_good']) +'\n')
+        logFile.write(' --- 5-Very good........: ' + str(songsByCategory['5_very_good']) +'\n')
 
         if len(failedSongs) == 0:
             logFile.write('failedSongs: No failures occurred processing songs\n')
