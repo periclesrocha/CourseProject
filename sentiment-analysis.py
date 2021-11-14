@@ -90,8 +90,8 @@ def categorizeSongs():
     failedSongs = []            # List of songs that failed to categorize
     nonEnglishSongsCount = 0    # Songs not in English
     nonEnglishSongs = []        # List of songs not in English
-    emptyLyricsCount = 0        # Song files that contain no lyrics
-    emptyLyrics = []            # List song files that were empty when inspected
+    shortLyricsCount = 0        # Song files that contain short lyrics (< 24 words)
+    shortLyrics = []            # List songs with short lyrics
     songsProcessedCount = 0     # Successes + failed + nonEnglish + empty lyrics
 
     # Datetime variables for logging purposes
@@ -163,10 +163,11 @@ def categorizeSongs():
                                         # Remove metadata before I categorize the song
                                         lyrics = removeLyricMetadata(rawLyrics)
 
-                                        # For some reason, some lyrics are empty. So we'll test that. 
-                                        if lyrics == '':
-                                            emptyLyricsCount += 1
-                                            emptyLyrics.append(songPath)
+                                        # For some reason, some lyrics are empty. 
+                                        # Songs on our database need to have at least 20 words after removing the metadata
+                                        if len(lyrics.split()) < 24:
+                                            shortLyricsCount += 1
+                                            shortLyrics.append(songPath)
                                         else:
                                             # Perform analysis ONLY if lyrics are in English
                                             songLanguage = detectLanguage(lyrics)
@@ -217,20 +218,20 @@ def categorizeSongs():
 
                                     # Print status at every 10%
                                     tenPercent = int(round(fileCount / 10,0))
-                                    songsProcessedCount = successesCount + failedSongsCount + nonEnglishSongsCount + emptyLyricsCount
+                                    songsProcessedCount = successesCount + failedSongsCount + nonEnglishSongsCount + shortLyricsCount
                                     if (successesCount > 0) and ((songsProcessedCount) % tenPercent == 0):
                                         percentage = int((songsProcessedCount) / fileCount * 100)
                                         print(str(songsProcessedCount), 'songs analyzed...',''.join(['(', str(percentage),'%)']))
 
-    print(str(successesCount + failedSongsCount + nonEnglishSongsCount + emptyLyricsCount), 'songs analyzed. (100%)')
+    print(str(successesCount + failedSongsCount + nonEnglishSongsCount + shortLyricsCount), 'songs analyzed. (100%)')
     print('')
     print('Sentiment Analysis categorization complete. Songs were categorized on', os.path.join(os.path.curdir, outputDir))
     print('')
     print('Results:')
-    print(' --- Songs analyzed (total):', str(successesCount + failedSongsCount + nonEnglishSongsCount + emptyLyricsCount))
+    print(' --- Songs analyzed (total):', str(successesCount + failedSongsCount + nonEnglishSongsCount + shortLyricsCount))
     print(' --- Successes.............:', str(successesCount))
     print(' --- Non-English*..........:', str(nonEnglishSongsCount))
-    print(' --- Empty files*..........:', str(emptyLyricsCount))
+    print(' --- Short lyrics*.........:', str(shortLyricsCount))
     print(' --- Failures*.............:', str(failedSongsCount))
     print(' --- Songs in each category:')
     print('           1-Very Bad.........:', str(songsByCategory['1_very_bad']))
@@ -253,7 +254,7 @@ def categorizeSongs():
         logFile.write('Elapsed time........: ' + str(round(elapsedTime,2)) + ' seconds (about ' + str(round(round(elapsedTime,2) / 60,1)) + ' minutes).\n')
         logFile.write('Total songs scanned.: ' + str(fileCount)+'\n')
         logFile.write('Songs categorized...: ' + str(successesCount)+'\n')
-        logFile.write('Empty lyrics files..: ' + str(emptyLyricsCount) +'\n')
+        logFile.write('Short lyric files...: ' + str(shortLyricsCount) +'\n')
         logFile.write('Non-english songs...: ' + str(nonEnglishSongsCount)+'\n')    
         logFile.write('Songs failed........: ' + str(failedSongsCount) +'\n')
         logFile.write('Songs per category..: ' + '\n' )
@@ -283,11 +284,11 @@ def categorizeSongs():
                 except Exception as e: 
                     logFile.write(' --- <FAILED TO WRITE SONG NAME IN LOG FILE> (Exception: ' + str(e) + ')' + '\n')
 
-        if len(emptyLyrics) == 0:
-            logFile.write('emptyLyrics: No songs with empty lyrics were found \n')
+        if len(shortLyrics) == 0:
+            logFile.write('shortLyrics: No songs with empty lyrics were found \n')
         else: 
-            logFile.write('List of empty lyrics on song files: \n')
-            for emptyLyric in emptyLyrics:
+            logFile.write('List of short lyrics on song files: \n')
+            for emptyLyric in shortLyrics:
                 try: 
                     logFile.write(' --- ' + emptyLyric +'\n')
                 except Exception as e: 
