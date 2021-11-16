@@ -8,8 +8,6 @@ query = input("What are your query words? ")
 n_results = int(input("How many results to show (number)? "))
 result = input("Show only title in results (y/n)?")
 
-mypath = "./"
-
 import os
 import sys
 import time
@@ -22,7 +20,6 @@ from rank_bm25 import BM25Okapi
 df_read = pd.read_csv(os.path.join(mypath, "music.csv"))
 with open("bm25.pkl", "rb") as tf:
     bm25_read = pickle.load(tf)
-    
 
 # Creating the query and print title results
 df_read.type = df_read.type.astype('int')
