@@ -16,6 +16,8 @@ import spacy
 import pickle
 from rank_bm25 import BM25Okapi
 
+mypath = ''
+
 # Reading offline dataset (csv) and tokenized file
 df_read = pd.read_csv(os.path.join(mypath, "music.csv"))
 with open("bm25.pkl", "rb") as tf:
