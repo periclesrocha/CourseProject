@@ -4,9 +4,9 @@ import spacy
 import pickle
 from rank_bm25 import BM25Okapi
 
-url_db = ".\database_categorized"
+path_db = ".\database_categorized"
 df = pd.DataFrame(columns = ["url", "type", "title", "artist", "text"])
-for root, dirs, files in os.walk(url_db):
+for root, dirs, files in os.walk(path_db):
     for filepath in files:
         classification = root.split('\\')[-1].split('_')[0]
         file_name = os.path.join(root, filepath)
