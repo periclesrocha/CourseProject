@@ -3,9 +3,11 @@
 ## SCRIPT TO ANALYZE THE LYRICS DB AND CATEGORIZE SONGS
 
 import nltk
+import numpy as np
 import os
-import time
 import shutil
+import time
+
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob   #Required for language detection
 
@@ -32,16 +34,18 @@ def removeLyricMetadata(lyrics):
         cleanLyrics += line + '\n'
     return cleanLyrics
 
-# Uses tokenization and removes stopwords from lyrics
+# Uses tokenization and removes stopwords from lyrics maintaining structure
 def removeStopWords(lyrics):
     stopwords = nltk.corpus.stopwords.words("english")
-    tokens = nltk.word_tokenize(lyrics)
 
     newLyrics = ''
-    for token in tokens:
-        if token not in stopwords:
-            newLyrics = newLyrics + token + ' '
-    
+    for line in lyrics.splitlines():
+        tokens = nltk.word_tokenize(line)
+        for token in tokens:
+            if token not in stopwords:
+                newLyrics = newLyrics + token + ' '
+        newLyrics = newLyrics + '\n'
+
     return newLyrics
 
 # Detects the language of the written lyrics
@@ -71,6 +75,16 @@ def cleanupOutputDir(outputDir):
         os.makedirs(os.path.join(outputDir, '5_very_good'))
 
     return count
+
+# Measures the sentiment for each line in the lyrics and computes an average for the whole song
+def getAverageCompound(lyrics):
+    compounds = []
+    for line in lyrics.splitlines():
+        if len(line.strip()) > 0:
+            sentiment = SentimentIntensityAnalyzer()
+            compounds.append(sentiment.polarity_scores(line)['compound'])
+
+    return np.mean(compounds)
 
 def categorizeSongs():
     print('Attempting to download required package files...')
@@ -187,8 +201,11 @@ def categorizeSongs():
 
                                                 sentiment = SentimentIntensityAnalyzer()
                                                 
+                                                # This line computes ONE compound for the whole lyrics
                                                 # NOTE: Sentiment analysis is run on lyrics that are tokenized and WITHOUT stop words. However... 
                                                 compound = sentiment.polarity_scores(lyricsNoStopWords)['compound']
+                                                #compound = getAverageCompound(lyricsNoStopWords)
+                                                #print(compound, compound2)
 
                                                 # ... when we DO categorize songs and want to make them available for search, 
                                                 # they will be stored in their original form.
