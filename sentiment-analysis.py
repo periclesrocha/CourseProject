@@ -6,10 +6,23 @@ import nltk
 import numpy as np
 import os
 import shutil
+import sys
 import time
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob   #Required for language detection
+
+# Determine arguments passed to the script. The script accepts only ONE argument: scope
+# Accepted values: 'full','verse','line'
+# If no parameters are passed, we will use 'full' as the default.
+# If the argument is invalid, we will halt execution. 
+acceptedArgs = ['full','verse','line']
+scope = 'full' #Default
+
+if (len(sys.argv)) > 1: # If parameters passed, see if it is accepted
+    scope = sys.argv[1].lower()
+    if scope not in acceptedArgs:
+        raise Exception("Invalid value for scope argument. Accepted: 'full', 'verse' or 'line'. Provided: ", scope)
 
 # Copies song lyrics files from source (orinal) directory to categorized (destination) directory for text retrieaval 
 def copyToCategorizedDir(albumPath, song, album, artist, outputDir, sentiment):
@@ -77,16 +90,46 @@ def cleanupOutputDir(outputDir):
     return count
 
 # Measures the sentiment for each line in the lyrics and computes an average for the whole song
-def getAverageCompound(lyrics):
+def getAverageCompound(lyrics, scope='full'):
     compounds = []
-    for line in lyrics.splitlines():
-        if len(line.strip()) > 0:
-            sentiment = SentimentIntensityAnalyzer()
-            compounds.append(sentiment.polarity_scores(line)['compound'])
+    
+    #Get the sentiment from the FULL lyrics at once
+    if scope == 'full':
+        sentiment = SentimentIntensityAnalyzer()
+        compounds.append(sentiment.polarity_scores(lyrics)['compound'])
 
-    return np.mean(compounds)
+    #Get the sentiment from the average of the compounds of each verse
+    elif scope == 'verse':
+        linecounter = 0
+        paragraph = ''
+        for line in lyrics.splitlines():
+            if line.strip() == '':
+                if linecounter > 0: 
+                    #Compute the sentiment for a full verse in the lyrics
+                    sentiment = SentimentIntensityAnalyzer()
+                    verseCompound = sentiment.polarity_scores(paragraph)['compound']
+                    if verseCompound != 0:
+                        compounds.append(verseCompound)
+                    linecounter = 0
+                    paragraph = ''
+            else:
+                paragraph = paragraph + line + '\n'
+                linecounter += 1
 
-def categorizeSongs():
+    #Get the sentiment from the average of the compounds of each line
+    elif scope == 'line':
+        for line in lyrics.splitlines():
+            if len(line.strip()) > 0:
+                sentiment = SentimentIntensityAnalyzer()
+                compounds.append(sentiment.polarity_scores(line)['compound'])
+
+    meanCompound = 0
+    if len(compounds) > 0:     
+        meanCompound = np.mean(compounds)
+
+    return meanCompound
+
+def categorizeSongs(scope):
     print('Attempting to download required package files...')
 
     # Packages required for tokenization, stopwords, and sentiment analysis
@@ -142,7 +185,8 @@ def categorizeSongs():
     print('Deleted', str(filesDeleted),'files that were previously organized.')
     print('')
 
-    print('Starting Song Sentiment Analysis on directory', os.path.join(os.path.curdir, dbDir), ' at ' + hour + ':' + minutes + ':' + seconds  + ' on ' + month  + '/' + day + '/' + year)
+    print('')
+    print('Starting Song Sentiment Analysis on directory', os.path.join(os.path.curdir, dbDir), ' at ' + hour + ':' + minutes + ':' + seconds  + ' on ' + month  + '/' + day + '/' + year, 'with scope',scope.upper())
     # Count all files for logging purposes
     print('Counting songs in source directories...')
     fileCount = sum(len(files) for _, _, files in os.walk(dbDir))
@@ -199,13 +243,10 @@ def categorizeSongs():
                                                 # Remove stop words - EVALUATE IF THIS YELDS BETTER RESULTS OR NOT
                                                 lyricsNoStopWords = removeStopWords(lyrics)
 
-                                                sentiment = SentimentIntensityAnalyzer()
-                                                
-                                                # This line computes ONE compound for the whole lyrics
+                                                # Get the compound sentiment. Can be full lyrics, verse or line averages
+                                                compound = getAverageCompound(lyricsNoStopWords,scope)
+
                                                 # NOTE: Sentiment analysis is run on lyrics that are tokenized and WITHOUT stop words. However... 
-                                                compound = sentiment.polarity_scores(lyricsNoStopWords)['compound']
-                                                #compound = getAverageCompound(lyricsNoStopWords)
-                                                #print(compound, compound2)
 
                                                 # ... when we DO categorize songs and want to make them available for search, 
                                                 # they will be stored in their original form.
@@ -270,6 +311,7 @@ def categorizeSongs():
         logFile.write('Finished running....: ' + time.asctime(time.localtime(endTime))+'\n')
         logFile.write('Elapsed time........: ' + str(round(elapsedTime,2)) + ' seconds (about ' + str(round(round(elapsedTime,2) / 60,1)) + ' minutes).\n')
         logFile.write('Total songs scanned.: ' + str(fileCount)+'\n')
+        logFile.write('Scope...............: ' + scope +'\n')
         logFile.write('Songs categorized...: ' + str(successesCount)+'\n')
         logFile.write('Short lyric files...: ' + str(shortLyricsCount) +'\n')
         logFile.write('Non-english songs...: ' + str(nonEnglishSongsCount)+'\n')    
@@ -331,5 +373,5 @@ print('|| github.com/periclesrocha                                              
 print('=======================================================================================================')
 print('')
 
-categorizeSongs()
+categorizeSongs(scope)
 print('')
