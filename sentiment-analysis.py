@@ -5,6 +5,7 @@
 import nltk
 import numpy as np
 import os
+import pandas as pd
 import shutil
 import sys
 import time
@@ -140,7 +141,8 @@ def categorizeSongs(scope):
         print('Successfully downloaded required package files.')
 
     dbDir = 'database_source'           # Root directory of the source (original) database
-    outputDir = 'database_categorized'  # Root directory of the categorized (destination) database
+    musicFile = 'TextRetrieval/music.csv'
+    #outputDir = 'database_categorized'  # Root directory of the categorized (destination) database
 
     successesCount = 0          # Songs succesfully categorized
     failedSongsCount = 0        # Songs failed to categorized
@@ -169,6 +171,9 @@ def categorizeSongs(scope):
     if len(seconds) == 1:
         seconds = '0' + seconds
 
+    # Holds the dataframe that stores the sentiment for each song
+    songData = pd.DataFrame(columns = ['url', 'title', 'artist','text', 'type'])
+    
     # Holds the count of songs categorized in each category
     songsByCategory = {
     '1_very_bad': 0,
@@ -178,12 +183,12 @@ def categorizeSongs(scope):
     '5_very_good': 0
     }
 
-    print('')
+    #print('')
     # Clean existing files
-    print('Cleaning up current destination folder...')
-    filesDeleted = cleanupOutputDir(outputDir)
-    print('Deleted', str(filesDeleted),'files that were previously organized.')
-    print('')
+    #print('Cleaning up current destination folder...')
+    #filesDeleted = cleanupOutputDir(outputDir)
+    #print('Deleted', str(filesDeleted),'files that were previously organized.')
+    #print('')
 
     print('')
     print('Starting Song Sentiment Analysis on directory', os.path.join(os.path.curdir, dbDir), ' at ' + hour + ':' + minutes + ':' + seconds  + ' on ' + month  + '/' + day + '/' + year, 'with scope',scope.upper())
@@ -250,22 +255,37 @@ def categorizeSongs(scope):
 
                                                 # ... when we DO categorize songs and want to make them available for search, 
                                                 # they will be stored in their original form.
+
+                                                newSong = []
+                                                newSong.append(songPath)
+                                                newSong.append(song)
+                                                newSong.append(artist)
+                                                newSong.append(lyricsNoStopWords)
+
+                                                sentiment = 0
                                                 if (compound < -0.6):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '1_very_bad')
+                                                    sentiment = 1
+                                                    #copyToCategorizedDir(albumPath, song, album, artist, outputDir, '1_very_bad')
                                                     songsByCategory['1_very_bad'] += 1
                                                 elif (compound >= -0.6) and (compound < -0.2):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '2_bad')
+                                                    sentiment = 2
+                                                    #copyToCategorizedDir(albumPath, song, album, artist, outputDir, '2_bad')
                                                     songsByCategory['2_bad'] += 1
                                                 elif (compound >= -0.2) and (compound <= 0.2):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '3_neutral')
+                                                    sentiment = 3
+                                                    #copyToCategorizedDir(albumPath, song, album, artist, outputDir, '3_neutral')
                                                     songsByCategory['3_neutral'] += 1
                                                 elif (compound > 0.2) and (compound <= 0.6):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '4_good')
+                                                    sentiment = 4
+                                                    #copyToCategorizedDir(albumPath, song, album, artist, outputDir, '4_good')
                                                     songsByCategory['4_good'] += 1
                                                 elif (compound > 0.6):
-                                                    copyToCategorizedDir(albumPath, song, album, artist, outputDir, '5_very_good')
+                                                    sentiment = 5
+                                                    #copyToCategorizedDir(albumPath, song, album, artist, outputDir, '5_very_good')
                                                     songsByCategory['5_very_good'] += 1
 
+                                                newSong.append(sentiment)
+                                                songData.loc[len(songData)] = newSong
                                                 successesCount += 1
 
                                     except Exception as e:
@@ -283,7 +303,15 @@ def categorizeSongs(scope):
 
     print(str(successesCount + failedSongsCount + nonEnglishSongsCount + shortLyricsCount), 'songs analyzed. (100%)')
     print('')
-    print('Sentiment Analysis categorization complete. Songs were categorized on', os.path.join(os.path.curdir, outputDir))
+
+    # Finished processing. Save dataframe to CSV
+    try:
+        songData.to_csv(musicFile, header=True)
+    except Exception as e:
+        print('Processing succedded, but failed to write songData file')
+        print('Exception: ', e)
+
+    print('Sentiment Analysis categorization complete. Songs were categorized on', musicFile)
     print('')
     print('Results:')
     print(' --- Songs analyzed (total):', str(successesCount + failedSongsCount + nonEnglishSongsCount + shortLyricsCount))
