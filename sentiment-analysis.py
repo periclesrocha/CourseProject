@@ -26,6 +26,7 @@ if (len(sys.argv)) > 1: # If parameters passed, see if it is accepted
         raise Exception("Invalid value for scope argument. Accepted: 'full', 'verse' or 'line'. Provided: ", scope)
 
 # Copies song lyrics files from source (orinal) directory to categorized (destination) directory for text retrieaval 
+# NO LONGER USED. REMOVE AFTER TESTS
 def copyToCategorizedDir(albumPath, song, album, artist, outputDir, sentiment):
     inputPath = os.path.join(albumPath, song)
 
@@ -68,6 +69,7 @@ def detectLanguage(lyrics):
     return songLanguage.detect_language()
 
 # Cleans up categorized (destination) directories ahead of categorization
+# NO LONGER USED. REMOVE AFTER TESTS
 def cleanupOutputDir(outputDir):
     # Delete all files and folders
     count = 0
