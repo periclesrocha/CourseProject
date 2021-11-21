@@ -260,7 +260,7 @@ def categorizeSongs(scope):
                                                 newSong.append(songPath)
                                                 newSong.append(song)
                                                 newSong.append(artist)
-                                                newSong.append(lyricsNoStopWords)
+                                                newSong.append(lyrics)
 
                                                 sentiment = 0
                                                 if (compound < -0.6):
@@ -306,7 +306,7 @@ def categorizeSongs(scope):
 
     # Finished processing. Save dataframe to CSV
     try:
-        songData.to_csv(musicFile, header=True)
+        songData.to_csv(musicFile, encoding='utf-8')
     except Exception as e:
         print('Processing succedded, but failed to write songData file')
         print('Exception: ', e)
