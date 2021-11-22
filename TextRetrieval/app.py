@@ -8,6 +8,11 @@ from rank_bm25 import BM25Okapi
 
 mood = 0  # define first stage with no button (face) selected
 
+# Initializing 'mood' as a session variable
+# Mood persists through the session despite of callbacks
+if 'mood' not in st.session_state:
+    st.session_state['mood'] = 0
+    	
 # CSS format to eliminate the right menu page and to format the size of face icons
 st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
@@ -39,23 +44,24 @@ st.write("")
 
 st.markdown("## <center> Select the desired mood</center>", unsafe_allow_html=True)
 st.write()
+
 # create the line with all face buttons
-col1, col2, col3, col4, col5 = st.beta_columns(5)
+col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     if col1.button("😥"):
-        mood = 1
+        st.session_state['mood'] = 1
 with col2:
     if col2.button("☹️"):
-        mood = 2
+        st.session_state['mood'] = 2
 with col3:
     if col3.button("😐"):
-        mood = 3
+        st.session_state['mood'] = 3
 with col4:
     if col4.button("🙂"):
-        mood = 4
+        st.session_state['mood'] = 4
 with col5:
     if col5.button("😀"):
-        mood = 5
+        st.session_state['mood'] = 5
 
 mood_list = ['very sad', 'sad', 'neutral', 'happy', 'very happy']
 
@@ -69,21 +75,33 @@ profanity_filter = st.checkbox('Use profanity filter', value=True)
 st.write("")
 st.write("")
 
+mood = st.session_state['mood']
 if mood > 0 and query != "":
     try:
         df_mood = df_read[df_read.sentiment == mood]
+
         # Change query, eliminate profanity if filter is activated
-        if profanity_filter:
-            query = profanity.censor(query).replace('*', '')
+        #if profanity_filter:
+        #    query = profanity.censor(query).replace('*', '')
         # clean tokenized words
+        
         tokenized_query = query.lower().split(" ")
         tokenized_query = [x for x in tokenized_query if x!=""]
         st.write(f"Some songs that suggest the mood {mood_list[mood-1]}")
         # Find the results with best retrieval score in the bm25 dictionary
         results = bm25_read[mood].get_top_n(tokenized_query, df_mood.title.values, n=10)
+        
         for i in range(len(results)):
             artist = df_read[df_read.title == results[i]].artist.values[0]
-            st.write(f"Song {i+1}: {results[i]}, by artist {artist}")
+
+            # Implementing the profanity filter over the song name
+            # This will be needed for the lyrics in case we decide to show it too 
+            songName = results[i]
+            if profanity_filter:
+                songName = profanity.censor(songName)
+                
+            st.markdown(f"Song {i+1}: <i><b>{songName}</b></i>, by <b>{artist}</b>", unsafe_allow_html=True)
+            #st.write(f"Song {i+1}: {results[i]}, by {artist}")
     except Exception as e:
         st.error("Error entering your query")
         st.write(e)
