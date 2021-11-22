@@ -25,7 +25,6 @@ margin-right:-4px; font-size: 40px
 df_read = pd.read_csv("music.csv")
 with open("bm25.pkl", "rb") as tf:
     bm25_read = pickle.load(tf)
-df_read.type = df_read.type.astype('int')
 
 st.title("My Kind of Music")
 st.write("")
@@ -57,7 +56,7 @@ mood_list = ['very sad', 'sad', 'neutral', 'happy', 'very happy']
 
 if mood > 0 and query != "":
     try:
-        df_mood = df_read[df_read.type == mood]
+        df_mood = df_read[df_read.sentiment == mood]
         # Change query, eliminate profanity if filter is activated
         if profanity_filter:
             query = profanity.censor(query).replace('*', '')
