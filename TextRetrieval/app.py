@@ -22,21 +22,24 @@ margin-right:-4px; font-size: 40px
 """, unsafe_allow_html=True)
 
 # Read music dataset (csv) and the inverted index dictionary (bm5.pkl)
-df_read = pd.read_csv("./files/music.csv")
-with open("./files/bm25.pkl", "rb") as tf:
+df_read = pd.read_csv("music.csv")
+with open("bm25.pkl", "rb") as tf:
     bm25_read = pickle.load(tf)
-df_read.type = df_read.type.astype('int')
+df_read.sentiment = df_read.sentiment.astype('int')
 
-st.title("My Kind of Music")
+st.markdown("# <center>My Kind of Music</center>", unsafe_allow_html=True)
+# st.title("My Kind of Music")
+# st.write("Find a song on your desired mood and keywords")
+st.markdown("#### <center> Find a song on your desired mood and keywords </center>", unsafe_allow_html=True)
 st.write("")
-st.write("Find a song on your desired mood and keywords")
-st.write("By Gunther Bacellar and Pericles Rocha")
-query = st.text_input('Provide a few keywords:',value = "")
-profanity_filter = st.checkbox('Profanity filter', value=True)
 
-st.write("Select the desired mood of the music:")
+st.write("")
+st.write("")
+
+st.markdown("## <center> Select the desired mood</center>", unsafe_allow_html=True)
+st.write()
 # create the line with all face buttons
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2, col3, col4, col5 = st.beta_columns(5)
 with col1:
     if col1.button("😥"):
         mood = 1
@@ -55,9 +58,19 @@ with col5:
 
 mood_list = ['very sad', 'sad', 'neutral', 'happy', 'very happy']
 
+st.write("")
+st.write("")
+
+st.markdown("## <center> Provide a few keywords </center>", unsafe_allow_html=True)
+query = st.text_input('',value = "")
+profanity_filter = st.checkbox('Use profanity filter', value=True)
+
+st.write("")
+st.write("")
+
 if mood > 0 and query != "":
     try:
-        df_mood = df_read[df_read.type == mood]
+        df_mood = df_read[df_read.sentiment == mood]
         # Change query, eliminate profanity if filter is activated
         if profanity_filter:
             query = profanity.censor(query).replace('*', '')
@@ -70,7 +83,9 @@ if mood > 0 and query != "":
         for i in range(len(results)):
             artist = df_read[df_read.title == results[i]].artist.values[0]
             st.write(f"Song {i+1}: {results[i]}, by artist {artist}")
-    except:
-        st.write("")
+    except Exception as e:
         st.error("Error entering your query")
+        st.write(e)
 
+st.markdown("""***""")
+st.caption("by Gunther Bacellar and Pericles Rocha")
