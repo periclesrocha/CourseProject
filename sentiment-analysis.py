@@ -328,8 +328,8 @@ def categorizeSongs(scope):
     print('           5-Very Good........:', str(songsByCategory['5_very_good']))
     print('   * Check the log file for list of songs')
     print('')
-    # Write log file
 
+    # Write log file
     logFileName = 'logs/sentiment-analysis-' + year + month+ day+ '_' + hour + minutes
 
     try: 
