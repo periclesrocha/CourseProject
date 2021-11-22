@@ -90,18 +90,26 @@ if mood > 0 and query != "":
         st.write(f"Some songs that suggest the mood {mood_list[mood-1]}")
         # Find the results with best retrieval score in the bm25 dictionary
         results = bm25_read[mood].get_top_n(tokenized_query, df_mood.title.values, n=10)
-        
-        for i in range(len(results)):
-            artist = df_read[df_read.title == results[i]].artist.values[0]
+        col6, col7 = st.columns(2)
+        with col6:
+            for i in range(5):
+                artist = df_read[df_read.title == results[i]].artist.values[0]
+                # Implementing the profanity filter over the song name
+                # This will be needed for the lyrics in case we decide to show it too 
+                songName = results[i]
+                if profanity_filter:
+                    songName = profanity.censor(songName)
+                st.markdown(f"{i+1}: <i><b>{songName}</b></i>, by <b>{artist}</b>", unsafe_allow_html=True)
+        with col7:
+            for i in range(5, 10):
+                artist = df_read[df_read.title == results[i]].artist.values[0]
+                # Implementing the profanity filter over the song name
+                # This will be needed for the lyrics in case we decide to show it too 
+                songName = results[i]
+                if profanity_filter:
+                    songName = profanity.censor(songName)
+                st.markdown(f"{i+1}: <i><b>{songName}</b></i>, by <b>{artist}</b>", unsafe_allow_html=True)      
 
-            # Implementing the profanity filter over the song name
-            # This will be needed for the lyrics in case we decide to show it too 
-            songName = results[i]
-            if profanity_filter:
-                songName = profanity.censor(songName)
-                
-            st.markdown(f"Song {i+1}: <i><b>{songName}</b></i>, by <b>{artist}</b>", unsafe_allow_html=True)
-            #st.write(f"Song {i+1}: {results[i]}, by {artist}")
     except Exception as e:
         st.error("Error entering your query")
         st.write(e)
