@@ -174,7 +174,7 @@ def categorizeSongs(scope):
         seconds = '0' + seconds
 
     # Holds the dataframe that stores the sentiment for each song
-    songData = pd.DataFrame(columns = ['url', 'title', 'artist','text', 'type'])
+    songData = pd.DataFrame(columns = ['title', 'artist', 'lyrics', 'sentiment'])
     
     # Holds the count of songs categorized in each category
     songsByCategory = {
@@ -259,7 +259,6 @@ def categorizeSongs(scope):
                                                 # they will be stored in their original form.
 
                                                 newSong = []
-                                                newSong.append(songPath)
                                                 newSong.append(song)
                                                 newSong.append(artist)
                                                 newSong.append(lyrics)
