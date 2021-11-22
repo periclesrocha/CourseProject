@@ -93,9 +93,12 @@ def cleanupOutputDir(outputDir):
     return count
 
 # Measures the sentiment for each line in the lyrics and computes an average for the whole song
-def getAverageCompound(lyrics, scope='full'):
+def getAverageCompound(lyrics, scope='full', addTitle=True, title=''):
     compounds = []
     
+    if addTitle:
+        lyrics = title + '\n' + '\n' + lyrics
+
     #Get the sentiment from the FULL lyrics at once
     if scope == 'full':
         sentiment = SentimentIntensityAnalyzer()
@@ -251,7 +254,7 @@ def categorizeSongs(scope):
                                                 lyricsNoStopWords = removeStopWords(lyrics)
 
                                                 # Get the compound sentiment. Can be full lyrics, verse or line averages
-                                                compound = getAverageCompound(lyricsNoStopWords,scope)
+                                                compound = getAverageCompound(lyricsNoStopWords,scope, True, song)
 
                                                 # NOTE: Sentiment analysis is run on lyrics that are tokenized and WITHOUT stop words. However... 
 
