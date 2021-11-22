@@ -22,8 +22,8 @@ margin-right:-4px; font-size: 40px
 """, unsafe_allow_html=True)
 
 # Read music dataset (csv) and the inverted index dictionary (bm5.pkl)
-df_read = pd.read_csv("./files/music.csv")
-with open("./files/bm25.pkl", "rb") as tf:
+df_read = pd.read_csv("music.csv")
+with open("bm25.pkl", "rb") as tf:
     bm25_read = pickle.load(tf)
 df_read.type = df_read.type.astype('int')
 
