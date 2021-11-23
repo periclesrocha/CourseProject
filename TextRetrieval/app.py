@@ -41,7 +41,7 @@ def style_button_row(clicked_button_ix, n_buttons):
             style += unclicked_style % get_button_indices(ix)
     st.markdown(f"<style>{style}</style>", unsafe_allow_html=True)
 
-st.set_page_config(page_title='My Kind of Music', page_icon='📻', layout='centered', initial_sidebar_state='collapsed', menu_items=None)
+st.set_page_config(page_title='My Kind of Music - Find a song on your desired mood and keywords', page_icon='📻', layout='centered', initial_sidebar_state='collapsed', menu_items=None)
 
 
 mood = 0  # define first stage with no button (face) selected
@@ -71,15 +71,12 @@ with open("bm25.pkl", "rb") as tf:
 
 df_read.sentiment = df_read.sentiment.astype('int')
 
-st.markdown("# <center>My Kind of Music</center>", unsafe_allow_html=True)
+#st.markdown("# <center>My Kind of Music</center>", unsafe_allow_html=True)
 # st.write("Find a song on your desired mood and keywords")
-st.markdown("#### <center> Find a song on your desired mood and keywords </center>", unsafe_allow_html=True)
-st.write("")
+#st.markdown("##### <center> Find a song on your desired mood and keywords </center>", unsafe_allow_html=True)
+#st.markdown("""***""")
 
-st.write("")
-st.write("")
-
-st.markdown("## <center> Select the desired mood</center>", unsafe_allow_html=True)
+st.markdown("## Step 1: Select the desired mood", unsafe_allow_html=True)
 st.write()
 
 # create the line with all face buttons
@@ -105,7 +102,7 @@ mood_list = ['very sad', 'sad', 'neutral', 'happy', 'very happy']
 st.write("")
 st.write("")
 
-st.markdown("## <center> Provide a few keywords </center>", unsafe_allow_html=True)
+st.markdown("## Step 2: Provide a few keywords ", unsafe_allow_html=True)
 query = st.text_input('',value = "")
 profanity_filter = st.checkbox('Use profanity filter', value=True)
 
@@ -127,7 +124,8 @@ if mood > 0 and query != "":
         
         tokenized_query = query.lower().split(" ")
         tokenized_query = [x for x in tokenized_query if x!=""]
-        st.write(f"Some songs that suggest the mood {mood_list[mood-1]}")
+        st.markdown(f"### <center>Some songs that suggest a *** {mood_list[mood-1]} *** mood</center>", unsafe_allow_html=True)
+        #st.write(f"Some songs that suggest the mood {mood_list[mood-1]}")
         # Find the results with best retrieval score in the bm25 dictionary
         results = bm25_read[mood].get_top_n(tokenized_query, df_mood.title.values, n=10)
         col6, col7 = st.columns(2)
@@ -155,4 +153,8 @@ if mood > 0 and query != "":
         st.write(e)
 
 st.markdown("""***""")
-st.caption("by Gunther Bacellar and Pericles Rocha")
+st.caption('"My Kind of Music", by Gunther Bacellar and Pericles Rocha')
+st.caption('github.com/periclesrocha/CourseProject')
+#st.markdown("# <center>My Kind of Music</center>", unsafe_allow_html=True)
+# st.write("Find a song on your desired mood and keywords")
+#st.markdown("##### <center> Find a song on your desired mood and keywords </center>", unsafe_allow_html=True)
