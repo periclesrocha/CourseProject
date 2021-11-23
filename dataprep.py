@@ -219,7 +219,7 @@ def categorizeSongs(scope):
                                         lyrics = removeLyricMetadata(rawLyrics)
 
                                         # For some reason, some lyrics are empty. 
-                                        # Songs on our database need to have at least 20 words after removing the metadata
+                                        # Songs on our database need to have at least 24 words after removing the metadata
                                         if len(lyrics.split()) < 24:
                                             shortLyricsCount += 1
                                             shortLyrics.append(songPath)
