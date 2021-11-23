@@ -6,6 +6,44 @@ import pickle
 from better_profanity import profanity
 from rank_bm25 import BM25Okapi
 
+# Always keeps the selected button highlited. 
+# Code adapted from https://stackoverflow.com/questions/69478972/how-to-style-a-button-in-streamlit
+def style_button_row(clicked_button_ix, n_buttons):
+    def get_button_indices(button_ix):
+        return {
+            'nth_child': button_ix,
+            'nth_last_child': n_buttons - button_ix + 1
+        }
+
+    clicked_style = """
+    div[data-testid*="stHorizontalBlock"] > div:nth-child(%(nth_child)s):nth-last-child(%(nth_last_child)s) button {
+        border-color: rgb(255, 75, 75);
+        color: rgb(255, 75, 75);
+        box-shadow: rgba(255, 75, 75, 0.5) 0px 0px 0px 0.2rem;
+        outline: currentcolor none medium;
+    }
+    """
+    unclicked_style = """
+    div[data-testid*="stHorizontalBlock"] > div:nth-child(%(nth_child)s):nth-last-child(%(nth_last_child)s) button {
+        opacity: 0.65;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+    }
+    """
+    style = ""
+    for ix in range(n_buttons):
+        ix += 1
+        if ix == clicked_button_ix:
+            style += clicked_style % get_button_indices(ix)
+        else:
+            style += unclicked_style % get_button_indices(ix)
+    st.markdown(f"<style>{style}</style>", unsafe_allow_html=True)
+
+st.set_page_config(page_title='My Kind of Music', page_icon='📻', layout='centered', initial_sidebar_state='collapsed', menu_items=None)
+
+
 mood = 0  # define first stage with no button (face) selected
 
 # Initializing 'mood' as a session variable
@@ -34,7 +72,6 @@ with open("bm25.pkl", "rb") as tf:
 df_read.sentiment = df_read.sentiment.astype('int')
 
 st.markdown("# <center>My Kind of Music</center>", unsafe_allow_html=True)
-# st.title("My Kind of Music")
 # st.write("Find a song on your desired mood and keywords")
 st.markdown("#### <center> Find a song on your desired mood and keywords </center>", unsafe_allow_html=True)
 st.write("")
@@ -48,19 +85,19 @@ st.write()
 # create the line with all face buttons
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
-    if col1.button("😥"):
+    if col1.button("😥", on_click=style_button_row,kwargs={'clicked_button_ix': 1, 'n_buttons': 5}):
         st.session_state['mood'] = 1
 with col2:
-    if col2.button("☹️"):
+    if col2.button("☹️", on_click=style_button_row,kwargs={'clicked_button_ix': 2, 'n_buttons': 5}):
         st.session_state['mood'] = 2
 with col3:
-    if col3.button("😐"):
+    if col3.button("😐", on_click=style_button_row,kwargs={'clicked_button_ix': 3, 'n_buttons': 5}):
         st.session_state['mood'] = 3
 with col4:
-    if col4.button("🙂"):
+    if col4.button("🙂", on_click=style_button_row,kwargs={'clicked_button_ix': 4, 'n_buttons': 5}):
         st.session_state['mood'] = 4
 with col5:
-    if col5.button("😀"):
+    if col5.button("😀", on_click=style_button_row,kwargs={'clicked_button_ix': 5, 'n_buttons': 5}):
         st.session_state['mood'] = 5
 
 mood_list = ['very sad', 'sad', 'neutral', 'happy', 'very happy']
@@ -78,6 +115,9 @@ st.write("")
 mood = st.session_state['mood']
 if mood > 0 and query != "":
     try:
+        # Apply the style to the selected button
+        style_button_row(st.session_state['mood'], 5)
+
         df_mood = df_read[df_read.sentiment == mood]
 
         # Change query, eliminate profanity if filter is activated
