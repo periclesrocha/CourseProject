@@ -49,7 +49,7 @@ def produceSongResult(artist, songName, explicit):
     if explicit:
         songName = profanity.censor(songName)
 
-    # Determines if the song name was changes to obfuscate explicit content
+    # Determines if the song name was changed to obfuscate explicit content
     if (oldSongName != songName):
         songResult = st.markdown(f'{i+1}: <a href="{songLink}" target="_blank" rel="noopener noreferrer"><b><i>{songName}</i></b></a>, by {artist}' + '<b> (Explicit)</b>', unsafe_allow_html=True)
     else: 
@@ -61,8 +61,8 @@ st.set_page_config(page_title='My Kind of Music - Find a song on your desired mo
 # CSS format to eliminate the right menu page and to format the size of face icons
 st.markdown("""<style> #MainMenu {visibility: hidden;} footer {visibility: hidden;}""", unsafe_allow_html=True)
 st.markdown("""<style> div.stButton > button:first-child {margin-right:-2px; font-size: 40px} </style>""", unsafe_allow_html=True)
-
 st.markdown(f"""<style>.reportview-container .main .block-container{{padding-top: 5px;}}</style>""",unsafe_allow_html=True,)
+
 mood = 0  # define first stage with no button (face) selected
 
 # Initializing 'mood' as a session variable
