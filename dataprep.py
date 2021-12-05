@@ -7,7 +7,7 @@ import numpy as np
 import os
 import pandas as pd
 import pickle
-import shutil
+#import shutil
 import spacy
 import sys
 import time
@@ -380,11 +380,13 @@ def categorizeSongs(scope):
 #                        SCRIPT STARTS HERE
 # ------------------------------------------------------------------------
 # ------------------------------------------------------------------------
-print('=======================================================================================================')
-print('|| Song Sentiment Analysis | V1 | written by Peri Rocha for CS410 Text Information Systems at UIUC   ||')
-print('|| Use of parts of this program is free as long as we are cited as the source                        ||')
-print('|| github.com/periclesrocha                                                                          ||')
-print('=======================================================================================================')
+print('===============================================================================================================')
+print('||                               MY KIND OF MUSIC - DATA PREPARATION SCRIPT                                  ||')
+print('|| Song Sentiment Analysis | V1 | written by Peri Rocha for CS410 Text Information Systems at UIUC           ||')
+print('|| Text Retrieval indexing | V1 | written by Gunther  Bacellar for CS410 Text Information Systems at UIUC    ||')
+print('|| Use of parts of this program is free as long as we are cited as the source                                ||')
+print('|| github.com/periclesrocha                                                                                  ||')
+print('===============================================================================================================')
 print('')
 
 categorizeSongs(scope)
