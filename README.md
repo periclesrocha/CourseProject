@@ -178,7 +178,7 @@ Many songs may have explicit content, so we offer the user the ability to use a 
     Image 6: Search results filtering explicit content
 </p>
 
-> Note: this mechanism does not evaluate song lyrics content – only the song’s title.
+> NOTE: this mechanism does not evaluate song lyrics content – only the song’s title.
 
 ## Implementation details  <a name="implementationdetails"></a>
 The software runs on Python for pre-processing tasks (song categorization and indexing) and for text retrieval. The web application was built on Python and Streamlit. We’ll describe all project assets, requirements, and core functionality. 
@@ -331,7 +331,7 @@ Your browser should open automatically:
     Image 9: web application
 </p>
 
-> Note: Streamlit supports two most recent versions of the following browsers: Google Chrome, Firefox, Microsoft Edge, and Safari. For more information, please refer to https://docs.streamlit.io/knowledge-base/using-streamlit/supported-browsers. 
+> NOTE: Streamlit supports two most recent versions of the following browsers: Google Chrome, Firefox, Microsoft Edge, and Safari. For more information, please refer to https://docs.streamlit.io/knowledge-base/using-streamlit/supported-browsers. 
 
 ## Appendix <a name="appendix"></a>
 ### Appendix A: software usage tutorial presentation <a name="appendixa"></a>
