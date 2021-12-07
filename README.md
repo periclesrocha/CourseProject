@@ -98,7 +98,7 @@ When it comes to analyzing the song’s sentiment, we tested three different app
 
 <p align="center">
     <img src="_images/image3.png">
-    
+    <br/>    
     Image 3: Song distribution when scoping each line individually
 <p/>
 
