@@ -4,7 +4,6 @@
 > CS 410 – Text Information Systems – Fall 2021
 > - Pericles Rocha (procha2 AT illinois DOT edu) – team leader/coordinator
 > - Gunther Correa Bacellar (procha2 AT illinois DOT edu)
-
 > Video tutorial: [YouTube link here]  <br/>
 > Repository: https://github.com/periclesrocha/CourseProject   <br/>
 > Try our app: https://musicmood.azurewebsites.net  <br/>
