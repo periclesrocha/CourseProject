@@ -11,9 +11,28 @@
 > Repository: https://github.com/periclesrocha/CourseProject   <br/>
 > Try our app: https://musicmood.azurewebsites.net  <br/>
 
-# Table of contents: 
+Table of contents:
+
 1. [Introduction](#introduction)
-    1. [How it works](#howitworks)
+2. [How it works](#howitworks)
+    1. [Measuring a song's sentiment based on lyrics](#measuresentiment)
+        1. [Data cleaning](#datacleaning)
+        2. [Song categorization](#songcategorization)
+    2. [Song retrieval](#songretrieval)
+    3. [Deploying the web application](#deployingthewebapplication)
+    4. [User experience](#userexperience)
+3. [Implementation details](#implementationdetails)
+    1. [Solution files](#solutionfiles)
+    2. [Conda requirements](#condarequirements)
+    3. [Program functions](#programfunctions)
+    4. [Installing the software](#installingthesoftware)
+    5. [Running the software](#runningthesoftware)
+        1. [Data preparation (optional)](#datapreparation)
+        2. [Running the web application](#runningthewebapplication)
+4. [Appendix](#appendix)
+    1. [Appendix A: software usage tutorial presentation](#appendixa)
+    2. [Appendix B: team member contribution](#appendixb)
+    3. [Appendix C: credit and references](#appendixc)
 
 ## Introduction <a name="introduction"></a>
 Music is an important part of human culture. While it is often thought of as simple entertainment, it can also impact how an individual feels and even affect their mood. In fact, music can be used in therapy to help relieve pressure, or to enhance certain feelings. People have pondered the possible therapeutic and mood boosting benefits of music for centuries.
@@ -22,10 +41,10 @@ Researchers at the Durham University, and the University of Jyvaskyla, Finland d
 
 Our project is a recommendation system that suggests songs to a user based on their desired mood and a few keywords. We ask the user to provide what their desired mood is from a 5-level ordinal scale (very sad, sad, neutral, happy, and very happy) and some key words, and the software recommends songs that match that user-defined sentiment and keywords.
 
-## How it works  <a name="howitworks"></a>
+## How it works <a name="howitworks"></a>
 There are two main parts to how the solution works: one is to use sentiment analysis techniques to determine the score sentiment of each song, and the other is to use text retrieval to fetch songs that match that sentiment using some keywords. Let’s look at those two parts in detail. 
 
-### Measuring a song’s sentiment based on lyrics
+### Measuring a song’s sentiment based on lyrics <a name="measuresentiment"></a>
 Some songs sound sad, negative, while others sound the opposite. A user may choose a given sentiment because either they want to further potentialize a certain feeling, or they want to hear something that gives them the opposite feeling. For example: if an individual is feeling sad, they may want to hear some happy, positive songs to help them overcome that feeling. The alternative would be for another individual who is happy, excited, and needs that extra energy boost for a workout. Finally, there’s nothing wrong with being on a bad mood and wanting to hear sad songs: drama helps develop tolerance and make individuals more empathic. There’s no judgement whatsoever for the choice of sentiment an individual is looking to get from a song.
 
 As far as the sentiment is concerned, modern sentiment analysis algorithms use natural language processing, text analysis, linguistics and more to systematically determine affective states of subjective information. These algorithms are widely used today to parse customer feedback, real-time response to ads or product launches through social media, and many more uses. While different techniques vary, sentiment analysis algorithms output a score that helps determine if the text being analyzed has a negative or positive stance. Our proposal is to leverage the same mechanism, but to provide a score that determines if a song’s lyrics are positive or negative. Instead of posing songs as positive or negative, we’re asking the user what their mood is between very sad and very happy, which seems to be more natural than asking them if they want songs with very negative or very positive sentiment. This is a design choice to make the application more natural.
@@ -33,7 +52,7 @@ As far as the sentiment is concerned, modern sentiment analysis algorithms use n
 Sentiment, however, is not binary. A user is not always very happy or very sad. Also, songs can have any sentiment from something very positive to very negative, and everything in between. To address this, we’ve chosen a scale that ranges sentiment between 1 and 5, from very sad to very happy. The five degrees of the scale are very sad (1), sad (2), neutral (3), happy (4) and very happy (5). Each song on our database is analyzed and assigned to a sentiment score, which we call a song’s mood. 
 The song sentiment analysis is a batch process that happens before the user even sees the application. When songs are retrieved from the database, they have already been scored with a given mood – all we need to do next is to lookup the database for songs in the desired mood for retrieval. 
 
-#### Data cleaning
+#### Data cleaning <a name="datacleaning"></a>
 When we implemented the sentiment analysis algorithm on songs in our database, at first, we noticed two important data quality issues that we had to resolve:
 
 - Songs that had very few words: some lyrics on our database are from songs that repeat only one or two words repeatedly. To address this issue, we decided to use only songs that had at least one complete verse on them. If you look at the structure of song lyrics, their hierarchy is: lyrics (full text), verses (blocks of 4 to 6 lines in average), and then lines. Analyzing all songs on our database, we noticed that verses have in average 24 words (six words in four lines). To achieve our goal to use only songs with at least one complete verse, our cut line became to only use songs with 24 words or more. This step removes 98 songs from our original database. 
@@ -41,7 +60,7 @@ When we implemented the sentiment analysis algorithm on songs in our database, a
 - Songs on different languages: after removing songs with less than 24 words, we noticed that several songs were written in languages different from English. Even though the same techniques can be used on any languages, we wanted to focus this study on sentiment analysis and text retrieval for songs in English only. Therefore, we implemented a step to detect the language used in a song and discard any songs that were not written in English. This step removes 476 songs from our database.
 As a result of this data cleaning process, we had 2426 song lyrics to work with (out of 3000 from the original database described in Appendix C). Other minor data quality issues were worked on to remove song metadata from the original lyrics’ files, address encoding issues, and others (e.g.: removing stop-words for tokenization). These steps did not remove any additional lyrics from our database.
 
-#### Song categorization
+#### Song categorization <a name="songcategorization"></a>
 The ideal solution to this problem would be to get a large dataset, manually classify some songs, use pre-trained models, and train our own model that categorizes a song based on its mood. This would, with time and with further training iterations, make the ultimate song categorizer. Our testing proved promising on a supervised learning test using 15 different classifiers, with 73% accuracy when we used a random forest classifier, without doing any hyperparameters. However, we eventually discarded this approach because we could not find a large enough dataset that would make training statistically significant, and it would require intense manual work to read through lyrics and manually classify a training set. When we noticed that packages already available performed well and offered productivity gains over our approach, it became a matter of choosing one that’s optimal.
 
 After experimenting with several open-source packages for sentiment analysis (NTLK, TextBlob, Flair, DeepMoji), we decided to use the Natural Language Toolkit (NLTK) package and the VADER model. It offered the best results and productivity in our scenario.
@@ -116,7 +135,7 @@ As songs are categorized, they are written to a comma-separated (.csv) file with
 
 This comma-separated file is used as the application database, and to create the reverse index used on song retrieval. 
 
-### Song retrieval
+### Song retrieval <a name="songretrieval"></a>
 For the song lyrics retrieval step, we first load the comma-separated file containing all lyrics, titles, artists, and sentiments. As we believe the song title is an important component to be part of the retrieval experience, we started by adding the song title to the lyrics that will be indexed.
 
 Second, we produced some transformations using Spacy (Python package) NLP pipeline with the en_core_web_sm tokenization rules specific for English, lowering case the lyrics and tokenizing each of the lyrics in 5 different mood groups. 
@@ -129,10 +148,10 @@ Finally, we saved the dictionary of indexes using the Pickle package. The pickle
 
 Now, when the web application is initialized, it quickly reads the lyrics dataset with sentiment (1-5) per song as well as the dictionary of indexes per sentiment (1-5). Then, by tokenizing the query input provided by the user, we are able to return in descending order the top 10 songs retrieved using the tokenized query and the right BM25 index based on the mood selected, showing the results to the end user.
 
-### Deploying the web application
+### Deploying the web application <a name="deployingthewebapplication"></a>
 After testing the web app locally using Streamlit, we packaged in it in a Docker container, registered the container to a container registry, and deployed it as a web application hosted in Microsoft Azure App Service. Hosting the app in cloud allow us to scale performance if necessary and easily deploy new versions. We’ve made it available at http://musicmood.azurewebsites.net for anyone interested in testing the use cases without having to deploy the application locally.
 
-### User experience
+### User experience <a name="userexperience"></a>
 Once a user runs the application, they are asked to select their desired mood by clicking on emojis that represent the 1-5 mood scale, and to type a few keywords that they’d like to see in song lyrics. The application retrieves ten songs from the database based on the mood and word relevance and displays the results to the user. Each song result links to a YouTube search, where the user can immediately hear that song. 
 
 
@@ -161,10 +180,10 @@ Many songs may have explicit content, so we offer the user the ability to use a 
 
 > Note: this mechanism does not evaluate song lyrics content – only the song’s title.
 
-## Implementation details 
+## Implementation details  <a name="implementationdetails"></a>
 The software runs on Python for pre-processing tasks (song categorization and indexing) and for text retrieval. The web application was built on Python and Streamlit. We’ll describe all project assets, requirements, and core functionality. 
 
-### Solution files
+### Solution files <a name="solutionfiles"></a>
 Here is a description of the solution files needed by our software:
 
 <center>
@@ -183,7 +202,7 @@ Here is a description of the solution files needed by our software:
 
 </center>
 
-### Conda requirements
+### Conda requirements <a name="condarequirements"></a>
 Our application runs on Python environments and was tested with specific versions of each package. These are the packages and versions we tested the solution with: 
 
 <center>
@@ -208,7 +227,7 @@ Our application runs on Python environments and was tested with specific version
 
 We successfully tested the application with Python 3.8.12. 
 
-### Program functions
+### Program functions <a name="programfunctions"></a>
 Here is a description of the functions used in the program: 
 
 <center>
@@ -229,7 +248,7 @@ Here is a description of the functions used in the program:
 
 </center>
 
-### Installing the software
+### Installing the software <a name="installingthesoftware"></a>
 Any user interested in testing our application can use a pre-deployed instance we’ve made available at https://musicmood.azurewebsites.net. This application will be available during the review period of the project. 
 
 To manually deploy the application to your own, perform the following steps on your conda terminal: 
@@ -273,10 +292,10 @@ git clone https://github.com/periclesrocha/CourseProject.git
 
 Now that all requirements are installed and configured, let’s run the application. 
 
-### Running the software
+### Running the software <a name="runningthesoftware"></a>
 As described previously, there are two steps in our software: the batch data preparation phase where songs in the source database are categorized and the reverse index is created, and the actual program that performs user queries in real time. 
 
-#### Data preparation (optional)
+#### Data preparation (optional) <a name="datapreparation"></a>
 Running the data preparation phase is optional – the repository already has a pre-built database and indexes that you can use. However, if you’d like to run the data preparation step for any reasons (e.g.: added new lyrics to the source catalog), you can do so by running the following command in the root directory of the repository: 
 ```
 python dataprep.py
@@ -294,7 +313,7 @@ Successfully running the script produces an output like the following:
     Image 7: output from dataprep.py 
 </p>
 
-#### Running the web application
+#### Running the web application <a name="runningthewebapplication"></a>
 Once you’re ready to run the application, simply type the following command to launch it on your default browser: 
 streamlit run app.py
 
@@ -314,16 +333,16 @@ Your browser should open automatically:
 
 > Note: Streamlit supports two most recent versions of the following browsers: Google Chrome, Firefox, Microsoft Edge, and Safari. For more information, please refer to https://docs.streamlit.io/knowledge-base/using-streamlit/supported-browsers. 
 
-## Appendix
-### Appendix A: software usage tutorial presentation
+## Appendix <a name="appendix"></a>
+### Appendix A: software usage tutorial presentation <a name="appendixa"></a>
 A short video presentation of the software that describes how to install and use the application, and a user demonstration, can be found on [youtube link].
 
-### Appendix B: team member contribution
+### Appendix B: team member contribution <a name="appendixb"></a>
 Our project had two team members who actively contributed to the vision, design, development, and documentation: 
 -	Pericles Rocha (procha2@illinois.edu): team leader and coordinator. Responsible for the original idea conception, solution design, sentiment analysis algorithm architecture and implementation, and project documentation. 
 -	Gunther Correa Bacellar (gunther6@illinois.edu): responsible for Text Retrieval algorithm architecture and implementation, for the development of the web application, cloud deployments and project documentation.
 
-### Appendix C: credit and references
+### Appendix C: credit and references <a name="appendixc"></a>
 This project is an original idea of the authors. It used, extended, or adapted source code from the following resources: 
 -	Open Lyrics project (https://github.com/openlyrics/openlyrics):
     - Lyrics database (contents of the database_source) folder. Contains three thousand song lyrics we used in the project. 
