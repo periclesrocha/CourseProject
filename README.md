@@ -77,8 +77,11 @@ When it comes to analyzing the song’s sentiment, we tested three different app
 
 - Option A: **Run the analysis on the full song lyrics text at once.** This seemed to be the obvious way to approach this problem, but we then realized that almost 85% of all songs were categorized in the two extremes of the scale – very bad or very good moods. This looks suspicious and unbalanced, but when you think about the nature of music, it is dramatic and intense by design. Neutral songs may never see the light of day. 
 
-<center><img src="_images/image1.png"></center>
-<center>Image 1: Song distribution when scoping the full lyrics</center>
+<p align="center">
+<img src="_images/image1.png">
+
+Image 1: Song distribution when scoping the full lyrics
+</p>
 <br/>
 
 - Option B: **Run the analysis on each verse and compute the song lyric average.** Some songs vary with different sentiment across the song lyrics, so we decided to measure the sentiment for each verse at a time, and then compute the average sentiment across all verses in a song’s lyrics. This produced a more balanced dataset across different mood categories, with higher number of songs on neutral. 
