@@ -11,8 +11,6 @@
 > Repository: https://github.com/periclesrocha/CourseProject   <br/>
 > Try our app: https://musicmood.azurewebsites.net  <br/>
 
-[TOC]
-
 ## Introduction
 Music is an important part of human culture. While it is often thought of as simple entertainment, it can also impact how an individual feels and even affect their mood. In fact, music can be used in therapy to help relieve pressure, or to enhance certain feelings. People have pondered the possible therapeutic and mood boosting benefits of music for centuries.
 
