@@ -5,8 +5,6 @@
 #### - Pericles Rocha (procha2 AT illinois DOT edu) – team leader/coordinator
 #### - Gunther Correa Bacellar (procha2 AT illinois DOT edu)
 
-<br/> 
-
 > Video tutorial: [YouTube link here]  <br/>
 > Repository: https://github.com/periclesrocha/CourseProject   <br/>
 > Try our app: https://musicmood.azurewebsites.net  <br/>
@@ -60,7 +58,7 @@ compound = sentiment.polarity_scores('Song Lyrics Here')['compound']
 
 In the above example, **compound** is a real number that ranges from -1 to 1, where -1 is something with very negative sentiment and 1 is something with very positive sentiment. Because the compound score can be any value between -1 and 1, this scale is extremely convenient for our 5-scale mood system. Therefore, when we run the sentiment analysis algorithm providing the lyrics, we’ll retrieve the compound score and classify the song as follows:
 
-<p align="center">
+<center>
 
 Compound score | Mood | Mood description
 -------------- | ---- |-----------------
@@ -70,10 +68,9 @@ Compound score | Mood | Mood description
 |> 0.2 and <= 0.6 | 4 | Happy | 
 |> 0.6 | 5 | Very Happy | 
 
-<i> Table 1: compound ranges for song classification <i/>
+<i> Table 1: compound ranges for song classification </i>
 
-<p/>
-
+</center>
 The ranges specified in the compound score on Table 1 evenly distributes the compound score in the five mood categories. 
 
 When it comes to analyzing the song’s sentiment, we tested three different approaches to reach an optimal result: 
@@ -84,7 +81,7 @@ When it comes to analyzing the song’s sentiment, we tested three different app
     <img src="_images/image1.png">
     <br/>    
     Image 1: Song distribution when scoping the full lyrics
-<p/>
+</p>
 
 - Option B: **Run the analysis on each verse and compute the song lyric average.** Some songs vary with different sentiment across the song lyrics, so we decided to measure the sentiment for each verse at a time, and then compute the average sentiment across all verses in a song’s lyrics. This produced a more balanced dataset across different mood categories, with higher number of songs on neutral. 
 
@@ -92,7 +89,7 @@ When it comes to analyzing the song’s sentiment, we tested three different app
     <img src="_images/image2.png">
     <br/>
     Image 2: Song distribution when scoping each verse individually
-<p/>
+</p>
 
 - Option C: **Run the analysis on each line and compute the song lyric average**. Following up on averaging the sentiment from verses, we wanted to test the results if we averaged each line at a time and then computed a song average. This produced poor, highly skewed results, with almost 90% of the songs categorized as neutral. This does not represent the reality observed in our dataset. 
 
@@ -100,7 +97,7 @@ When it comes to analyzing the song’s sentiment, we tested three different app
     <img src="_images/image3.png">
     <br/>    
     Image 3: Song distribution when scoping each line individually
-<p/>
+</p>
 
 The instance where we categorized songs by computing the averages from lyrics verses (option b, Image 2 above) seemed to produce our favorite results, and it became our choice for the application deployed to users. The song categorization on verse scope produces a bell-curved distribution that realistically represents our dataset.
 
@@ -137,7 +134,7 @@ Once a user runs the application, they are asked to select their desired mood by
     <img src="_images/method.png">
     <br/>
     Image 4: User flow
-<p/>
+</p>
 
 
 The application consumes the previously processed databased that already has songs categorized by sentiment but performs keyword search in real time by checking one of the five inverted indexes available as a dictionary.
@@ -146,7 +143,7 @@ The application consumes the previously processed databased that already has son
     <img src="_images/ux_elements.png">
     <br/>
     Image 5: Description of UX elements
-<p/>
+</p>
 
 Many songs may have explicit content, so we offer the user the ability to use a profanity filter, if desired. This option, which is enabled by default, still retrieves songs with explicit content, but masks profanity words from their title and adds the “(Explicit)” descriptor. 
 
@@ -154,7 +151,7 @@ Many songs may have explicit content, so we offer the user the ability to use a 
     <img src="_images/profanity_example.png">
     <br/>
     Image 6: Search results filtering explicit content
-<p/>
+</p>
 
 > Note: this mechanism does not evaluate song lyrics content – only the song’s title.
 
@@ -163,6 +160,8 @@ The software runs on Python for pre-processing tasks (song categorization and in
 
 ### Solution files
 Here is a description of the solution files needed by our software:
+
+<center>
 
 | Asset name and path | Type | Description |
 |---------------------|------|-------------|
@@ -173,10 +172,15 @@ Here is a description of the solution files needed by our software:
 | app.py | File | The web application | 
 | dataprep.py | File | Performs data preparation: offline batch processing of song categorization, and creation of the reverse index | 
 | requirements.txt | File | Lists all package and version requirements for the solution | 
-<i>Table 2: solution files<i/>
+
+<i>Table 2: solution files</i>
+
+</center>
 
 ### Conda requirements
 Our application runs on Python environments and was tested with specific versions of each package. These are the packages and versions we tested the solution with: 
+
+<center>
 
 | Package name | Version | Purpose (why we use it) | 
 |--------------|---------|-------------------------| 
@@ -191,25 +195,33 @@ Our application runs on Python environments and was tested with specific version
 | streamlit | 1.2.0 | App framework used by our web application | 
 | sys | (core) | Used to parse command line parameters | 
 | time | (core) | Helps measure execution times for logging purposes | 
-<i>Table 3: conda requirements <i/>
+
+<i>Table 3: conda requirements </i>
+
+</center>
 
 We successfully tested the application with Python 3.8.12. 
 
 ### Program functions
 Here is a description of the functions used in the program: 
 
+<center>
+
 | Function name | File | Description | Parameters | Output |
 |---------------|------|-------------|------------|--------|
 | style_button_row | app.py | Applies CSS styles to mood buttons to highlight the selected mood	 | **clicked_button_ix**: index of the selected button. **n_buttons**: count of buttons | (none)
-| produceSongResult | app.py | Produces the descriptive song result string displayed to the user including YouTube search link	 |  **artist**: the artist’s name. **songName**: the name of the song. **explicit**: determines if the function needs to obfuscate profanity in song title	HTML code with formatted song result string | 
+| produceSongResult | app.py | Produces the descriptive song result string displayed to the user including YouTube search link	 |  **artist**: the artist’s name. **songName**: the name of the song. **explicit**: determines if the function needs to obfuscate profanity in song title	| HTML code with formatted song result string | 
 | renderWebApp | app.py | Shows UX elements and processes input | (none) | (none) |
 | removeLyricMetadata | dataprep.py | Removes metadata from lyric file for sentiment analysis processing | **lyrics**: full text from the song lyrics file | Song lyrics without metadata | 
 | removeStopWords | dataprep.py | Removes stop-words from lyrics maintaining structure | **lyrics**: song lyrics | Song lyrics without stop-words | 
 | detectLanguage | dataprep.py | Detects the language of a song | **lyrics**: song lyrics | Two-character representation of language |
 | getAverageCompound | dataprep.py | Computes the sentiment analysis of a song | **lyrics**: song lyrics. **scope**: accepts ‘full’, ‘verse’ (default), or ‘line’. Determines the scope of the sentiment analysis. **addTitle**: True (default) or False. Determines if the song title should be added to the analysis. **title**: song title | Returns the mean compound of sentiment analysis based on the desired scope | 
 | createIndexes | dataprep.py | Creates reverse index file used in text retrieval | (none) | (none) | 
-| categorizeSongs | dataprep.py | Performs sentiment analysis computation across the songs database	scope: accepts ‘full’, ‘verse’ (default), or ‘line’. Determines the scope of the sentiment analysis | (none) | 
-<i>Table 4: program functions<i/>
+| categorizeSongs | dataprep.py | Performs sentiment analysis computation across the songs database	scope: accepts ‘full’, ‘verse’ (default), or ‘line’. Determines the scope of the sentiment analysis | (none) | (none) | 
+
+<i>Table 4: program functions</i>
+
+</center>
 
 ### Installing the software
 Any user interested in testing our application can use a pre-deployed instance we’ve made available at https://musicmood.azurewebsites.net. This application will be available during the review period of the project. 
@@ -219,7 +231,7 @@ To manually deploy the application to your own, perform the following steps on y
 ```python
 conda create -n "<env_name>" python=3.8.12 
 ```
-where **<env_name>** is an environment name of your choice
+    where **<env_name>** is an environment name of your choice
 
 2)	Activate your new environment: 
 ```python
@@ -233,7 +245,6 @@ conda install pip
 ```
 anaconda/envs/<envname>/scripts/pip.exe install -r requirements.txt
 ```
-
 5)	Install the spacy package:
 ``` 
 python spacy download en_core_web_sm
@@ -243,7 +254,7 @@ python spacy download en_core_web_sm
 ```
 git clone https://github.com/periclesrocha/CourseProject.git
 ```
-Alternatively, you can simply download the project files to your computer. 
+    Alternatively, you can simply download the project files to your computer. 
 
 8)	Switch to the directory where you downloaded the repository
 
@@ -275,7 +286,7 @@ Successfully running the script produces an output like the following:
     <img src="_images/dataprep.png">
     <br/>
     Image 7: output from dataprep.py 
-<p/>
+</p>
 
 #### Running the web application
 Once you’re ready to run the application, simply type the following command to launch it on your default browser: 
@@ -285,7 +296,7 @@ streamlit run app.py
     <img src="_images/image8.png">
     <br/>
     Image 8: console window
-<p/>
+</p>
 
 Your browser should open automatically: 
  
@@ -293,7 +304,7 @@ Your browser should open automatically:
     <img src="_images/image9.png">
     <br/>
     Image 9: web application
-<p/>
+</p>
 
 > Note: Streamlit supports two most recent versions of the following browsers: Google Chrome, Firefox, Microsoft Edge, and Safari. For more information, please refer to https://docs.streamlit.io/knowledge-base/using-streamlit/supported-browsers. 
 
