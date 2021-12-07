@@ -11,14 +11,18 @@
 > Repository: https://github.com/periclesrocha/CourseProject   <br/>
 > Try our app: https://musicmood.azurewebsites.net  <br/>
 
-## Introduction
+# Table of contents: 
+1. [Introduction](#introduction)
+    1. [How it works](#howitworks)
+
+## Introduction <a name="introduction"></a>
 Music is an important part of human culture. While it is often thought of as simple entertainment, it can also impact how an individual feels and even affect their mood. In fact, music can be used in therapy to help relieve pressure, or to enhance certain feelings. People have pondered the possible therapeutic and mood boosting benefits of music for centuries.
 
 Researchers at the Durham University, and the University of Jyvaskyla, Finland discovered  that even sad music can lift your mood. Others suggest music can boost happiness and reduce anxiety. In some cases, users may seek to enhance their current feeling, regardless of what that feeling is, and they seek for the right song to augment what they are feeling. From the drumbeats of our ancient ancestors to today’s unlimited streaming services, music is an integral part of the human experience. 
 
 Our project is a recommendation system that suggests songs to a user based on their desired mood and a few keywords. We ask the user to provide what their desired mood is from a 5-level ordinal scale (very sad, sad, neutral, happy, and very happy) and some key words, and the software recommends songs that match that user-defined sentiment and keywords.
 
-## How it works
+## How it works  <a name="howitworks"></a>
 There are two main parts to how the solution works: one is to use sentiment analysis techniques to determine the score sentiment of each song, and the other is to use text retrieval to fetch songs that match that sentiment using some keywords. Let’s look at those two parts in detail. 
 
 ### Measuring a song’s sentiment based on lyrics
