@@ -78,22 +78,29 @@ When it comes to analyzing the song’s sentiment, we tested three different app
 - Option A: **Run the analysis on the full song lyrics text at once.** This seemed to be the obvious way to approach this problem, but we then realized that almost 85% of all songs were categorized in the two extremes of the scale – very bad or very good moods. This looks suspicious and unbalanced, but when you think about the nature of music, it is dramatic and intense by design. Neutral songs may never see the light of day. 
 
 <p align="center">
-<img src="_images/image1.png">
-
-Image 1: Song distribution when scoping the full lyrics
+    <img src="_images/image1.png">
 </p>
+<p align="center">
+    Image 1: Song distribution when scoping the full lyrics
+<p/>
 <br/>
 
 - Option B: **Run the analysis on each verse and compute the song lyric average.** Some songs vary with different sentiment across the song lyrics, so we decided to measure the sentiment for each verse at a time, and then compute the average sentiment across all verses in a song’s lyrics. This produced a more balanced dataset across different mood categories, with higher number of songs on neutral. 
 
-<center><img src="_images/image2.png"></center>
-<center>Image 2: Song distribution when scoping each verse individually</center>
-<br/>
+<p align="center">
+    <img src="_images/image2.png">
+</p>
+<p align="center">
+    Image 2: Song distribution when scoping each verse individually
+<p/>
 
 - Option C: **Run the analysis on each line and compute the song lyric average**. Following up on averaging the sentiment from verses, we wanted to test the results if we averaged each line at a time and then computed a song average. This produced poor, highly skewed results, with almost 90% of the songs categorized as neutral. This does not represent the reality observed in our dataset. 
 
-<center><img src="_images/image3.png"></center>
-<center>Image 3: Song distribution when scoping each line individually</center>
+<p align="center">
+    <img src="_images/image3.png">
+    Image 3: Song distribution when scoping each line individually
+<p/>
+
 <br/>
 
 
@@ -127,20 +134,20 @@ After testing the web app locally using Streamlit, we packaged in it in a Docker
 ### User experience
 Once a user runs the application, they are asked to select their desired mood by clicking on emojis that represent the 1-5 mood scale, and to type a few keywords that they’d like to see in song lyrics. The application retrieves ten songs from the database based on the mood and word relevance and displays the results to the user. Each song result links to a YouTube search, where the user can immediately hear that song. 
 
-<center><img src="_images/method.png"></center>
-<center>Image 4: User flow</center>
+<img src="_images/method.png">
+Image 4: User flow
 <br/>
 
 The application consumes the previously processed databased that already has songs categorized by sentiment but performs keyword search in real time by checking one of the five inverted indexes available as a dictionary.
 
-<center><img src="_images/ux_elements.png"></center>
-<center>Image 5: Description of UX elements</center>
+<img src="_images/ux_elements.png">
+Image 5: Description of UX elements
 <br/>
 
 Many songs may have explicit content, so we offer the user the ability to use a profanity filter, if desired. This option, which is enabled by default, still retrieves songs with explicit content, but masks profanity words from their title and adds the “(Explicit)” descriptor. 
 
-<center><img src="_images/profanity_example.png"></center>
-<center>Image 6: Search results filtering explicit content</center>
+<img src="_images/profanity_example.png">
+Image 6: Search results filtering explicit content
 <br/>
 
 > Note: this mechanism does not evaluate song lyrics content – only the song’s title.
@@ -258,22 +265,22 @@ python dataprep.py full
 
 Successfully running the script produces an output like the following: 
 
-<center><img src="_images/dataprep.png"></center>
-<center>Image 7: output from dataprep.py </center>
+<img src="_images/dataprep.png">
+Image 7: output from dataprep.py 
 <br/>
 
 #### Running the web application
 Once you’re ready to run the application, simply type the following command to launch it on your default browser: 
 streamlit run app.py
  
-<center><img src="_images/image8.png"></center>
-<center>Image 8: console window</center>
+<img src="_images/image8.png">
+Image 8: console window
 <br/>
 
 Your browser should open automatically: 
  
-<center><img src="_images/image9.png"></center>
-<center>Image 9: web application</center>
+<img src="_images/image9.png">
+Image 9: web application
 <br/>
 
 > Note: Streamlit supports two most recent versions of the following browsers: Google Chrome, Firefox, Microsoft Edge, and Safari. For more information, please refer to https://docs.streamlit.io/knowledge-base/using-streamlit/supported-browsers. 
