@@ -11,8 +11,6 @@
 > Repository: https://github.com/periclesrocha/CourseProject   <br/>
 > Try our app: https://musicmood.azurewebsites.net  <br/>
 
-<br/>
-
 ## Introduction
 Music is an important part of human culture. While it is often thought of as simple entertainment, it can also impact how an individual feels and even affect their mood. In fact, music can be used in therapy to help relieve pressure, or to enhance certain feelings. People have pondered the possible therapeutic and mood boosting benefits of music for centuries.
 
@@ -69,6 +67,7 @@ Compound score | Mood | Mood description
 |>= -0.2 and <= 0.2 | 3 | Neutral | 
 |> 0.2 and <= 0.6 | 4 | Happy | 
 |> 0.6 | 5 | Very Happy | 
+
 <i> Table 1: compound ranges for song classification <i/>
 
 The ranges specified in the compound score on Table 1 evenly distributes the compound score in the five mood categories. 
