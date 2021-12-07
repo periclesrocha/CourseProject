@@ -1,18 +1,18 @@
-Started running.....: Sun Nov 21 14:03:57 2021
-Finished running....: Sun Nov 21 14:08:35 2021
-Elapsed time........: 277.92 seconds (about 4.6 minutes).
-Total songs scanned.: 3000
+Started running.....: Mon Dec  6 20:39:03 2021
+Finished running....: Mon Dec  6 20:45:42 2021
+Elapsed time........: 398.27 seconds (about 6.6 minutes).
+Total songs scanned.: 3995
 Scope...............: verse
-Songs categorized...: 2426
-Short lyric files...: 98
-Non-english songs...: 476
+Songs categorized...: 3412
+Short lyric files...: 104
+Non-english songs...: 479
 Songs failed........: 0
 Songs per category..: 
- --- 1-Very bad.........: 217
- --- 2-Bad..............: 715
- --- 3-Neutral..........: 816
- --- 4-Good.............: 525
- --- 5-Very good........: 153
+ --- 1-Very bad.........: 257
+ --- 2-Bad..............: 905
+ --- 3-Neutral..........: 1103
+ --- 4-Good.............: 834
+ --- 5-Very good........: 313
 failedSongs: No failures occurred processing songs
 List of Non-english songs: 
  --- (de): database_source\A\Adam Angst\Adam Angst\Jesus Christus
@@ -118,6 +118,7 @@ List of Non-english songs:
  --- (de): database_source\C\Captain PlanET\Treibeis\Pyro
  --- (de): database_source\C\Casper\Im Ascheregen\Im Ascheregen
  --- (de): database_source\C\Casper\Kein Mensch ist Illegal\Hinterland
+ --- (fr): database_source\C\Charlotte Gainsbourg\__unknown_album\Tel Que Tu Es
  --- (de): database_source\D\DCVDNS\D.W.I.S\Eigentlich Wollte Nate Dogg Die Hook Singen
  --- (de): database_source\D\DCVDNS\D.W.I.S\Intro
  --- (de): database_source\D\Deichkind\Bitte ziehen sie durch\Smogcity
@@ -406,6 +407,8 @@ List of Non-english songs:
  --- (de): database_source\S\Schandmaul\Unendlich\Saphira
  --- (de): database_source\S\Schandmaul\Unendlich\Tippelbruder
  --- (de): database_source\S\Schandmaul\Unendlich\Trafalgar
+ --- (es): database_source\S\Shakira\__unknown_album\Donde Estas Corazon
+ --- (es): database_source\S\Shakira\__unknown_album\Pienso En Ti
  --- (de): database_source\S\Sielwolf\Nachtstrom\Verstärker Zerstört
  --- (es): database_source\S\Ska-P\99%\Radio Falacia
  --- (es): database_source\S\Ska-P\99%\Victoria
@@ -522,6 +525,7 @@ List of short lyrics on song files:
  --- database_source\A\Aphex Twin\Windowlicker\Windowlicker
  --- database_source\A\Archive\With Us Until You're Dead\Calm Now
  --- database_source\A\Arms and Sleepers\Matador\Helvetica
+ --- database_source\B\Behemoth\__unknown_album\Malice
  --- database_source\B\Bloodhound Gang\Hefty Fine\Diarrhea Runs In The Family
  --- database_source\B\Bloodhound Gang\Hefty Fine\Overheard In A Wawa Parking Lot
  --- database_source\B\Bloodhound Gang\Hefty Fine\Strictly For The Tardcore
@@ -579,6 +583,7 @@ List of short lyrics on song files:
  --- database_source\M\Mad Season\Above\November Hotel
  --- database_source\M\Massive Attack\Mezzanine\Exchange
  --- database_source\M\MC1R\20th anniversary\Force Of Inertia (I'd Be Disappointed If I Cared Enough Remix By Fix8Sed8)
+ --- database_source\M\My Chemical Romance\__unknown_album\Interlude (Album Version)
  --- database_source\P\Pendulum\Immersion\The Island - Pt. II (Dusk)
  --- database_source\P\Pendulum\In Silico\9,000 Miles
  --- database_source\S\Stereotaxic Device\100 Per Day Extinct\Caitanya
@@ -587,6 +592,10 @@ List of short lyrics on song files:
  --- database_source\T\The Midnight\Nocturnal\Collateral
  --- database_source\T\The Midnight\Nocturnal\Nocturnal
  --- database_source\T\The Midnight\Nocturnal\Tokyo Night Train
+ --- database_source\T\The Police\__unknown_album\Voices Inside My Head
  --- database_source\T\The Prodigy\Invaders Must Die\Omen Reprise
  --- database_source\T\The Prodigy\The Day Is My Enemy\Destroy
+ --- database_source\T\Tom Cochrane\__unknown_album\Revelations
+ --- database_source\U\Uriah Heep\__unknown_album\Wake The Sleeper
  --- database_source\W\We Butter The Bread With Butter\Der Tag an dem die Welt unterging\Schiff Ahoi
+ --- database_source\W\William Orbit\__unknown_album\The Monkey King

@@ -1,13 +1,10 @@
-import streamlit as st
-# import os
-import pandas as pd
-# import spacy
-import pickle
 from better_profanity import profanity
-from rank_bm25 import BM25Okapi
+import pandas as pd
+import pickle
+#from rank_bm25 import BM25Okapi
+import streamlit as st
 
 musicServiceURL = 'https://music.youtube.com/search?q='
-
 
 # Always keeps the selected button highlited. 
 # Code adapted from https://stackoverflow.com/questions/69478972/how-to-style-a-button-in-streamlit
@@ -73,7 +70,6 @@ def renderWebApp():
     # Mood persists through the session despite of callbacks
     if 'mood' not in st.session_state:
         st.session_state['mood'] = 0
-            
 
     # Read music dataset (csv) and the inverted index dictionary (bm5.pkl)
 
@@ -82,11 +78,6 @@ def renderWebApp():
         bm25_read = pickle.load(tf)
 
     df_read.sentiment = df_read.sentiment.astype('int')
-
-    #st.markdown("# <center>My Kind of Music</center>", unsafe_allow_html=True)
-    # st.write("Find a song on your desired mood and keywords")
-    #st.markdown("##### <center> Find a song on your desired mood and keywords </center>", unsafe_allow_html=True)
-    #st.markdown("""***""")
 
     st.markdown("## Step 1: Select the desired mood", unsafe_allow_html=True)
     st.write()

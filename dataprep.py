@@ -18,10 +18,10 @@ from textblob import TextBlob   #Required for language detection
 
 # Determine arguments passed to the script. The script accepts only ONE argument: scope
 # Accepted values: 'full','verse','line'
-# If no parameters are passed, we will use 'full' as the default.
+# If no parameters are passed, we will use 'verse' as the default.
 # If the argument is invalid, we will halt execution. 
 acceptedArgs = ['full','verse','line']
-scope = 'full' #Default
+scope = 'verse' #Default
 
 songFile  = 'TextRetrieval/music.csv'
 indexFile = 'TextRetrieval/bm25.pkl'
