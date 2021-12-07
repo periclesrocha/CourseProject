@@ -60,6 +60,8 @@ compound = sentiment.polarity_scores('Song Lyrics Here')['compound']
 
 In the above example, **compound** is a real number that ranges from -1 to 1, where -1 is something with very negative sentiment and 1 is something with very positive sentiment. Because the compound score can be any value between -1 and 1, this scale is extremely convenient for our 5-scale mood system. Therefore, when we run the sentiment analysis algorithm providing the lyrics, we’ll retrieve the compound score and classify the song as follows:
 
+<p align="center">
+
 Compound score | Mood | Mood description
 -------------- | ---- |-----------------
 |< -0.6 | 1 | Very Sad | 
@@ -69,6 +71,8 @@ Compound score | Mood | Mood description
 |> 0.6 | 5 | Very Happy | 
 
 <i> Table 1: compound ranges for song classification <i/>
+
+<p/>
 
 The ranges specified in the compound score on Table 1 evenly distributes the compound score in the five mood categories. 
 
