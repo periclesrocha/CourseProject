@@ -1,11 +1,11 @@
 # My Kind of Music - project documentation
 
-> University of Illinois at Urbana-Champaign
+> University of Illinois at Urbana-Champaign <br/>
 > CS 410 – Text Information Systems – Fall 2021
 >
 > Authors: 
 > - Pericles Rocha (procha2 AT illinois DOT edu) – team leader/coordinator
-> - Gunther Correa Bacellar (procha2 AT illinois DOT edu) <br/>
+> - Gunther Correa Bacellar (gunther6 AT illinois DOT edu) <br/>
 >
 > Video tutorial: [YouTube link here]  <br/>
 > Repository: https://github.com/periclesrocha/CourseProject   <br/>
