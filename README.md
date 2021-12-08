@@ -252,34 +252,36 @@ Here is a description of the functions used in the program:
 Any user interested in testing our application can use a pre-deployed instance we’ve made available at https://musicmood.azurewebsites.net. This application will be available during the review period of the project. 
 
 To manually deploy the application to your own, perform the following steps on your conda terminal: 
-1)	Create a new conda environment (optional, but recommended): 
+1)	Switch to the directory where you want to clone the project repository to.
+
+2)	Clone the project repository. If you’re using Git bash, use the following command: 
+```
+git clone https://github.com/periclesrocha/CourseProject.git
+```
+    Alternatively, you can simply download the project files to your computer. 
+
+3)	Create a new conda environment (optional, but recommended): 
 ```python
 conda create -n "<env_name>" python=3.8.12 
 ```
     where **<env_name>** is an environment name of your choice
 
-2)	Activate your new environment: 
+4)	Activate your new environment: 
 ```python
 conda activate <env_name>
 ```
-3)	Install the pip package manager. It will be used to install dependencies listed on the requirements file: 
+5)	Install the pip package manager. It will be used to install dependencies listed on the requirements file: 
 ```python
 conda install pip
 ```
-4)	Install requirements described in the requirements.txt file. Note: If you’re using pip as your package manager and conda for python environments, you **SPECIFICALLY MUST RUN the instance of pip that’s deployed to your environment folder**, or the packages will be installed in the global environment. Example: 
+6)	Install requirements described in the requirements.txt file. Note: If you’re using pip as your package manager and conda for python environments, you **SPECIFICALLY MUST RUN the instance of pip that’s deployed to your environment folder**, or the packages will be installed in the global environment. Example: 
 ```
 anaconda/envs/<envname>/scripts/pip.exe install -r requirements.txt
 ```
-5)	Install the spacy package:
+7)	Install the spacy package:
 ``` 
 python -m spacy download en_core_web_sm
 ```
-6)	Switch to the directory where you want to clone the project repository to.
-7)	Clone the project repository. If you’re using Git bash, use the following command: 
-```
-git clone https://github.com/periclesrocha/CourseProject.git
-```
-    Alternatively, you can simply download the project files to your computer. 
 
 8)	Switch to the directory where you downloaded the repository
 
