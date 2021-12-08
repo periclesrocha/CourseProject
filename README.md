@@ -7,7 +7,7 @@
 > - Pericles Rocha (procha2 AT illinois DOT edu) – team leader/coordinator
 > - Gunther Correa Bacellar (gunther6 AT illinois DOT edu) <br/>
 >
-> Video tutorial: [YouTube link here]  <br/>
+> Video tutorial: https://youtu.be/RMCBQ7bltt0 <br/>
 > Repository: https://github.com/periclesrocha/CourseProject   <br/>
 > Try our app: https://musicmood.azurewebsites.net  <br/>
 
@@ -266,7 +266,7 @@ git clone https://github.com/periclesrocha/CourseProject.git
 ```python
 conda create -n "<env_name>" python=3.8.12 
 ```
-    where **<env_name>** is an environment name of your choice
+    where <env_name> is an environment name of your choice
 
 5)	Activate your new environment: 
 ```python
@@ -317,7 +317,10 @@ Successfully running the script produces an output like the following:
 
 #### Running the web application <a name="runningthewebapplication"></a>
 Once you’re ready to run the application, simply type the following command to launch it on your default browser: 
+
+```
 streamlit run app.py
+```
 
 <p align="center">
     <img src="_images/image8.png">
