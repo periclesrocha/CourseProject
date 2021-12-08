@@ -1,3 +1,6 @@
+> Video presentation/tutorial: https://youtu.be/RMCBQ7bltt0 <br/>
+> Try our app: https://musicmood.azurewebsites.net  <br/>
+
 # My Kind of Music - project documentation
 
 > University of Illinois at Urbana-Champaign <br/>
@@ -7,9 +10,6 @@
 > - Pericles Rocha (procha2 AT illinois DOT edu) – team leader/coordinator
 > - Gunther Correa Bacellar (gunther6 AT illinois DOT edu) <br/>
 >
-> Video tutorial: https://youtu.be/RMCBQ7bltt0 <br/>
-> Repository: https://github.com/periclesrocha/CourseProject   <br/>
-> Try our app: https://musicmood.azurewebsites.net  <br/>
 
 Table of contents:
 
