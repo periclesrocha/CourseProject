@@ -272,7 +272,7 @@ anaconda/envs/<envname>/scripts/pip.exe install -r requirements.txt
 ```
 5)	Install the spacy package:
 ``` 
-python spacy download en_core_web_sm
+python -m spacy download en_core_web_sm
 ```
 6)	Switch to the directory where you want to clone the project repository to.
 7)	Clone the project repository. If you’re using Git bash, use the following command: 
