@@ -260,30 +260,30 @@ git clone https://github.com/periclesrocha/CourseProject.git
 ```
     Alternatively, you can simply download the project files to your computer. 
 
-3)	Create a new conda environment (optional, but recommended): 
+3)	Switch to the directory of your clone.
+
+4)	Create a new conda environment (optional, but recommended): 
 ```python
 conda create -n "<env_name>" python=3.8.12 
 ```
     where **<env_name>** is an environment name of your choice
 
-4)	Activate your new environment: 
+5)	Activate your new environment: 
 ```python
 conda activate <env_name>
 ```
-5)	Install the pip package manager. It will be used to install dependencies listed on the requirements file: 
+6)	Install the pip package manager. It will be used to install dependencies listed on the requirements file: 
 ```python
 conda install pip
 ```
-6)	Install requirements described in the requirements.txt file. Note: If you’re using pip as your package manager and conda for python environments, you **SPECIFICALLY MUST RUN the instance of pip that’s deployed to your environment folder**, or the packages will be installed in the global environment. Example: 
+7)	Install requirements described in the requirements.txt file. Note: If you’re using pip as your package manager and conda for python environments, you **SPECIFICALLY MUST RUN the instance of pip that’s deployed to your environment folder**, or the packages will be installed in the global environment. Example: 
 ```
 anaconda/envs/<envname>/scripts/pip.exe install -r requirements.txt
 ```
-7)	Install the spacy package:
+8)	Install the spacy package:
 ``` 
 python -m spacy download en_core_web_sm
 ```
-
-8)	Switch to the directory where you downloaded the repository
 
 > NOTE: The requirements.txt file used above is provided as part of our repository and lists all dependencies with versions.
 
